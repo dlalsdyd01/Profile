@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', 'Roboto Slab', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #3b3b58);
+  color: #eee;
+}
+
+a {
+  color: #00c3ff;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.left-panel, .right-panel {
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.left-panel {
+  flex: 1;
+  max-width: 320px;
+  text-align: center;
+}
+
+.right-panel {
+  flex: 2;
+  min-width: 300px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00c3ff;
+  padding-bottom: 5px;
+}
+
+section p, ul {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li::marker {
+  color: #00c3ff;
+}
+
+.contact-info p {
+  margin: 10px 0;
+  color: #ccc;
+}
+
+.flip-card {
+  width: 100%;
+  max-width: 240px;
+  height: 280px;
+  margin: 0 auto 20px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background: #00c3ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+.skills-icons, .design-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.skills-icons div, .design-tools div {
+  width: 80px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skills-icons div:hover, .design-tools div:hover {
+  transform: translateY(-6px);
+}
+
+.skills-icons img, .design-tools img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.skills-icons p, .design-tools p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #eee;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .left-panel, .right-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
