@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개발자 포트폴리오</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --accent3: #43e97b;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --card: #13131d;
+    }
+    [data-theme="light"] {
+      --bg: #f5f5f7;
+      --bg2: #eaeaf0;
+      --bg3: #dddde8;
+      --border: rgba(0,0,0,0.1);
+      --text: #1a1a2e;
+      --muted: #6b6b80;
+      --card: #ffffff;
+    }
+    [data-theme="light"] nav { background: rgba(245,245,247,0.92); }
+
+    /* 텍스트 */
+    [data-theme="light"] .hero-name { color: #1a1a2e; }
+    [data-theme="light"] .hero-role { color: #444; }
+    [data-theme="light"] .hero-desc { color: #444; }
+    [data-theme="light"] .section-title { color: #1a1a2e; }
+    [data-theme="light"] .section-sub { color: #555; }
+    [data-theme="light"] .about-text { color: #333; }
+    [data-theme="light"] .modal-desc { color: #333; }
+    [data-theme="light"] .feature-list li { color: #333; }
+    [data-theme="light"] .project-title { color: #1a1a2e; }
+    [data-theme="light"] .project-desc { color: #555; }
+    [data-theme="light"] .award-title { color: #1a1a2e; }
+    [data-theme="light"] .tl-title { color: #1a1a2e; }
+    [data-theme="light"] .cert-name { color: #1a1a2e; }
+    [data-theme="light"] .info-value { color: #1a1a2e; }
+    [data-theme="light"] .skill-title { color: #1a1a2e; }
+    [data-theme="light"] .about-content h2 { color: #1a1a2e; }
+
+    /* 수상 silver 텍스트 */
+    [data-theme="light"] .award-rank.silver { color: #666; border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.06); }
+    [data-theme="light"] .award-year { color: #888; }
+
+    /* 태그 yellow — 라이트에서 더 진하게 */
+    [data-theme="light"] .tag.yellow { color: #b8860b; background: rgba(184,134,11,0.1); border-color: rgba(184,134,11,0.3); }
+
+    /* 스택 칩 */
+    [data-theme="light"] .stack-chip { background: rgba(108,99,255,0.1); color: #4a43cc; border: 1px solid rgba(108,99,255,0.2); }
+
+    /* 히어로 stat 카드 */
+    [data-theme="light"] .stat-card { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.1); }
+    [data-theme="light"] .stat-value { color: #6c63ff; }
+    [data-theme="light"] .stat-label { color: #555; }
+
+    /* 프로젝트 카드 날짜 */
+    [data-theme="light"] .project-date { color: #888; }
+
+    /* 연락 섹션 */
+    [data-theme="light"] .contact-card { background: var(--card); }
+    [data-theme="light"] .contact-card h2 { color: #1a1a2e; }
+    [data-theme="light"] .contact-card p { color: #555; }
+    [data-theme="light"] .contact-link { color: #1a1a2e; border-color: rgba(0,0,0,0.15); }
+    [data-theme="light"] .contact-link:hover { border-color: var(--accent); }
+
+    /* footer */
+    [data-theme="light"] footer { color: #888; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed; bottom: 36px; right: 36px; z-index: 200;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+      opacity: 0; pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: var(--accent2); box-shadow: 0 4px 24px rgba(255,101,132,0.4); transform: translateY(-2px); }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 50px; padding: 6px 14px; cursor: pointer;
+      font-size: 1rem; transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+      color: var(--text);
+    }
+    .theme-toggle:hover { border-color: var(--accent); }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.5px; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 80px 60px 0;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(108,99,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(255,101,132,0.08) 0%, transparent 60%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      max-width: 1100px; width: 100%; align-items: center; position: relative;
+    }
+    .hero-tag {
+      display: inline-block; padding: 6px 14px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 20px; font-size: 0.78rem; color: var(--accent);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800; line-height: 1.1; margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .hero-name span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-role {
+      font-size: 1.15rem; color: var(--muted); margin-bottom: 28px;
+    }
+    .hero-desc { color: rgba(232,232,240,0.7); max-width: 420px; margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 28px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all 0.25s; text-decoration: none; border: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9b59ff);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,99,255,0.5); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 32px; position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(108,99,255,0.2) 0%, transparent 70%);
+    }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-item { text-align: center; padding: 20px; background: var(--bg3); border-radius: 12px; }
+    .stat-num {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-tag {
+      display: inline-block; padding: 5px 14px;
+      border: 1px solid rgba(108,99,255,0.4); border-radius: 20px;
+      font-size: 0.75rem; color: var(--accent); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; margin-bottom: 12px; }
+    .section-sub { color: var(--muted); max-width: 500px; margin: 0 auto; }
+    hr.divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    #skills > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; transition: border-color 0.25s, transform 0.25s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .skill-icon { font-size: 2rem; margin-bottom: 14px; }
+    .skill-title { font-weight: 700; margin-bottom: 14px; font-size: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+      background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.25); color: #a89fff;
+    }
+    .tag.green { background: rgba(67,233,123,0.1); border-color: rgba(67,233,123,0.25); color: #43e97b; }
+    .tag.pink { background: rgba(255,101,132,0.1); border-color: rgba(255,101,132,0.25); color: #ff6584; }
+    .tag.yellow { background: rgba(255,214,0,0.1); border-color: rgba(255,214,0,0.25); color: #ffd600; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .project-card:hover {
+      border-color: var(--accent); transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(108,99,255,0.2);
+    }
+    .project-thumb {
+      width: 100%; height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; position: relative; overflow: hidden;
+    }
+    .project-thumb::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--card));
+    }
+    .project-body { padding: 22px; }
+    .project-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .badge {
+      padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-web { background: rgba(108,99,255,0.2); color: var(--accent); }
+    .badge-app { background: rgba(67,233,123,0.15); color: var(--accent3); }
+    .badge-api { background: rgba(255,214,0,0.15); color: #ffd600; }
+    .badge-ml { background: rgba(255,101,132,0.15); color: var(--accent2); }
+    .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .stack-chip {
+      padding: 3px 10px; font-size: 0.72rem; border-radius: 6px;
+      background: var(--bg3); color: var(--muted); border: 1px solid var(--border);
+    }
+    .project-footer { display: flex; justify-content: space-between; align-items: center; }
+    .project-links { display: flex; gap: 10px; }
+    .icon-btn {
+      width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+      background: transparent; color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+      transition: all 0.2s; text-decoration: none;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .project-date { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 24px;
+      max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto;
+      position: relative; animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-header {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; border-radius: 24px 24px 0 0; position: relative; overflow: hidden;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.4); color: #fff; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.1); }
+    .modal-body { padding: 32px; }
+    .modal-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+    .modal-sub { color: var(--muted); margin-bottom: 24px; font-size: 0.9rem; }
+    .modal-section { margin-bottom: 24px; }
+    .modal-section h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 10px; }
+    .modal-desc { color: rgba(232,232,240,0.8); font-size: 0.95rem; line-height: 1.8; }
+    .feature-list { list-style: none; }
+    .feature-list li {
+      padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem;
+      color: rgba(232,232,240,0.75); display: flex; align-items: flex-start; gap: 10px;
+    }
+    .feature-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .modal-actions { display: flex; gap: 12px; margin-top: 28px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    .about-inner { max-width: 1100px; margin: 0 auto; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: stretch; }
+    .about-avatar-wrap {
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; position: relative; width: 100%; height: 100%;
+    }
+    .about-avatar-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(255,101,132,0.1));
+    }
+    .about-content h2 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+    .about-role { color: var(--accent); font-size: 0.95rem; margin-bottom: 20px; }
+    .about-text { color: rgba(232,232,240,0.7); line-height: 1.9; margin-bottom: 14px; word-break: keep-all; }
+    .about-text:last-of-type { margin-bottom: 28px; }
+    .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .about-info-item { background: var(--bg3); border-radius: 10px; padding: 14px 16px; }
+    .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+    .info-value { font-size: 0.9rem; font-weight: 600; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 32px; }
+    .tl-dot {
+      position: absolute; left: -28px; top: 4px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(108,99,255,0.3);
+    }
+    .tl-date { font-size: 0.75rem; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 4px; }
+    .tl-title { font-weight: 700; margin-bottom: 4px; }
+    .tl-sub { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cert-card {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 12px 18px; transition: border-color 0.25s, transform 0.25s;
+    }
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .cert-icon { font-size: 1.3rem; }
+    .cert-name { font-size: 0.88rem; font-weight: 600; }
+    .cert-badge {
+      font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); color: var(--accent);
+    }
+    .cert-badge.green { background: rgba(67,233,123,0.12); border-color: rgba(67,233,123,0.3); color: #43e97b; }
+
+    /* ── AWARDS ── */
+    #awards { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    .awards-inner { max-width: 1100px; margin: 0 auto; }
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 0; }
+    .award-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 30px; position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .award-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+    .award-card::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%; opacity: 0.08;
+    }
+    .award-card.gold::before { background: #ffd700; }
+    .award-card.silver::before { background: #c0c0c0; }
+    .award-card.bronze::before { background: #cd7f32; }
+    .award-rank {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800;
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .award-rank.gold { background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.35); color: #ffd700; }
+    .award-rank.silver { background: rgba(192,192,192,0.15); border: 1px solid rgba(192,192,192,0.3); color: #c8c8d4; }
+    .award-rank.finalist { background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.35); color: var(--accent); }
+    .award-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .award-org { font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; }
+    .award-year {
+      position: absolute; top: 28px; right: 28px;
+      font-size: 0.75rem; color: var(--muted); font-weight: 600;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+      padding: 64px; max-width: 700px; margin: 0 auto; position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+    }
+    .contact-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; position: relative; }
+    .contact-card p { color: var(--muted); margin-bottom: 36px; position: relative; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 24px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--bg3); text-decoration: none; color: var(--text);
+      font-size: 0.9rem; font-weight: 600; transition: all 0.25s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px 60px;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem;
+    }
+
+    /* ── CURSOR DOT ── */
+    .cursor { pointer-events: none; position: fixed; z-index: 9999; mix-blend-mode: screen; }
+    .cursor-dot {
+      width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+      transform: translate(-50%, -50%); transition: transform 0.1s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px; border: 1.5px solid rgba(108,99,255,0.5);
+      border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.15s;
+    }
+
+    /* ── SCROLL FADE IN ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      #hero { padding: 100px 24px 40px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { display: none; }
+      #skills, #about { padding: 70px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar-wrap { max-width: 200px; margin: 0 auto; }
+      .contact-card { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursorDot"><div class="cursor-dot"></div></div>
+<div class="cursor" id="cursorRing"><div class="cursor-ring"></div></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DEV.</div>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#skills">기술</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#awards">수상</a></li>
+    <li><a href="#contact">연락</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 다크</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%;padding-top:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid" style="margin:0 auto;">
+    <div>
+      <div class="hero-tag">✦ Available for work</div>
+      <h1 class="hero-name">안녕하세요,<br>저는 <span>이민용</span>입니다</h1>
+      <p class="hero-role">AI Developer · Full-Stack Engineer</p>
+      <p class="hero-desc">AI 기술을 중심으로 실생활 문제를 해결하는 개발자입니다. 머신러닝·딥러닝부터 웹 서비스 구축까지 end-to-end로 구현하며, 사용자에게 실질적인 가치를 전달하는 것을 목표로 합니다.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">⚡ 프로젝트 보기</a>
+        <a href="#contact" class="btn btn-outline">연락하기 →</a>
+      </div>
+    </div>
+    <div class="hero-card fade-up">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">완성 프로젝트</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">전문 분야</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">기술 스택</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">열정</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">저를 소개합니다</h2>
+    </div>
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="about-avatar-wrap">👨‍💻</div>
+      </div>
+      <div class="fade-up">
+        <div class="about-content">
+          <h2>이민용</h2>
+          <div class="about-role">AI Developer · Full-Stack Engineer</div>
+          <p class="about-text">
+            나사렛대학교 IT인공지능학부를 졸업하고, 우송IT교육센터 채용연계형 SW 전문인재 양성교육 및 바이오헬스 우송캠퍼스 교육과정을 수료했습니다.
+          </p>
+          <p class="about-text">
+            PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지 end-to-end로 개발할 수 있는 </br>AI 기반 개발자입니다.
+          </p>
+          <p class="about-text">
+            개발 역량 외에도 Figma · Adobe XD를 활용한 UI/UX 설계, Photoshop · 3ds Max를 이용한 그래픽·3D 작업, After Effects · Premiere Pro를 통한 영상 편집까지 가능해 기획부터 개발, 디자인, 콘텐츠 제작을 혼자서도 수행할 수 있습니다.
+          </p>
+          <div class="about-info-grid">
+            <div class="about-info-item">
+              <div class="info-label">위치</div>
+              <div class="info-value">서울, 대한민국</div>
+            </div>
+            <div class="about-info-item">
+              <div class="info-label">생년월일</div>
+              <div class="info-value">2000.05.16</div>
+            </div>
+            <div class="about-info-item">
+              <div class="info-label">이메일</div>
+              <div class="info-value">kv0435029@naver.com</div>
+            </div>
+            <div class="about-info-item">
+              <div class="info-label">전화번호</div>
+              <div class="info-value">010-2782-5603</div>
+            </div>
+            <div class="about-info-item">
+              <div class="info-label">학력</div>
+              <div class="info-value">나사렛대 IT인공지능학부</div>
+            </div>
+            <div class="about-info-item">
+              <div class="info-label">상태</div>
+              <div class="info-value" style="color:var(--accent3);">● 채용 중</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;" class="fade-up">
+      <div class="section-tag" style="margin-bottom:24px;">Education & Experience</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2026</div>
+          <div class="tl-title">IT인공지능학부 졸업</div>
+          <div class="tl-sub">나사렛대학교</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2025</div>
+          <div class="tl-title">바이오헬스 교육과정 수료</div>
+          <div class="tl-sub">2025년 바이오헬스 우송캠퍼스 교육과정</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2025</div>
+          <div class="tl-title">채용연계형 SW 전문인재 양성교육 수료</div>
+          <div class="tl-sub">우송IT교육센터</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;" class="fade-up">
+      <div class="section-tag" style="margin-bottom:24px;">Certifications</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">📜</div>
+          <div class="cert-name">정보처리기사</div>
+          <div class="cert-badge green">국가기술자격</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <div class="cert-name">Google Analytics</div>
+          <div class="cert-badge">Google</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🖥️</div>
+          <div class="cert-name">ITQ 인터넷</div>
+          <div class="cert-badge">ITQ</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📝</div>
+          <div class="cert-name">ITQ 한글</div>
+          <div class="cert-badge">ITQ</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <div class="cert-name">ITQ 엑셀</div>
+          <div class="cert-badge">ITQ</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🖼️</div>
+          <div class="cert-name">ITQ 파워포인트</div>
+          <div class="cert-badge">ITQ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="section-header fade-up">
+    <div class="section-tag">Tech Stack</div>
+    <h2 class="section-title">기술 스택</h2>
+    <p class="section-sub">다양한 환경에서 경험을 쌓아온 기술들입니다</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto 24px;" class="fade-up">
+    <div class="section-tag">Dev Stack</div>
+  </div>
+  <div class="skills-grid fade-up">
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-title">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag">HTML / CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Chart.js</span>
+        <span class="tag">TensorFlow.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-title">Backend</div>
+      <div class="skill-tags">
+        <span class="tag green">Python</span>
+        <span class="tag green">Flask</span>
+        <span class="tag green">FastAPI</span>
+        <span class="tag green">WebSocket</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="tag yellow">PyTorch</span>
+        <span class="tag yellow">MediaPipe</span>
+        <span class="tag yellow">YOLOv5</span>
+        <span class="tag yellow">Gemini AI</span>
+        <span class="tag yellow">OpenCV</span>
+        <span class="tag yellow">Pandas / NumPy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-title">Deploy & Tools</div>
+      <div class="skill-tags">
+        <span class="tag pink">Git / GitHub</span>
+        <span class="tag pink">Render</span>
+        <span class="tag pink">Linux</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:40px auto 0;" class="fade-up">
+    <div class="section-tag" style="margin-bottom:24px;">Creative Tools</div>
+    <div class="skills-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-title">UI / UX 디자인</div>
+        <div class="skill-tags">
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Figma</span>
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Adobe XD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🖼️</div>
+        <div class="skill-title">그래픽 & 3D</div>
+        <div class="skill-tags">
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Photoshop</span>
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">3ds Max</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎬</div>
+        <div class="skill-title">영상 편집</div>
+        <div class="skill-tags">
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">After Effects</span>
+          <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Premiere Pro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <div class="section-tag">Works</div>
+    <h2 class="section-title">프로젝트</h2>
+    <p class="section-sub">직접 기획하고 개발한 프로젝트들입니다. </p>
+    카드를 클릭하면 자세히 볼 수 있어요.</p>
+  </div>
+  <div class="projects-grid fade-up" id="projectsGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- AWARDS -->
+<div id="awards">
+  <div class="awards-inner">
+    <div class="section-header fade-up">
+      <div class="section-tag">Awards</div>
+      <h2 class="section-title">수상 이력</h2>
+      <p class="section-sub">대회와 공모전</p>
+    </div>
+    <div class="awards-grid fade-up">
+      <div class="award-card gold">
+        <div class="award-rank gold">🥇 대상</div>
+        <div class="award-title">나사렛대학교 제22회 학술제</div>
+        <div class="award-org">나사렛대학교 IT인공지능학부</div>
+      </div>
+      <div class="award-card silver">
+        <div class="award-rank silver">🥈 최우수상</div>
+        <div class="award-title">초광역 창업역량 강화캠프</div>
+        <div class="award-org">2025 초광역 창업역량 강화캠프</div>
+      </div>
+      <div class="award-card bronze">
+        <div class="award-rank finalist">🏆 본선 진출</div>
+        <div class="award-title">DMC코넷 빅데이터 아이디어 오디션</div>
+        <div class="award-org">DMC코넷 주최 · 2025</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-card fade-up">
+    <h2>함께 일해요 👋</h2>
+    <p>새로운 프로젝트나 기회에 항상 열려 있습니다.<br>아래 링크로 편하게 연락주세요.</p>
+    <div class="contact-links">
+      <a href="mailto:kv0435029@naver.com" class="contact-link">📧 이메일 보내기</a>
+      <a href="https://github.com/dlalsdyd01" target="_blank" class="contact-link">🐙 GitHub</a>
+      <a href="#" class="contact-link">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 이민용</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalEl">
+    <div class="modal-header" id="modalHeader">
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="project-badges" id="modalBadges"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-sub" id="modalSub"></p>
+      <div class="modal-section">
+        <h4>프로젝트 소개</h4>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+      <div class="modal-section">
+        <h4>주요 기능</h4>
+        <ul class="feature-list" id="modalFeatures"></ul>
+      </div>
+      <div class="modal-section">
+        <h4>사용 기술</h4>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── BACK TO TOP ──
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // ── THEME TOGGLE ──
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  function updateToggleBtn() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.getElementById('themeToggle').textContent = isDark ? '🌙 다크' : '☀️ 라이트';
+  }
+  updateToggleBtn();
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateToggleBtn();
+  }
+
+  // ── PROJECT DATA ──
+  const projects = [
+    {
+      emoji: '🌏', image: 'KWV.png', bg: 'linear-gradient(135deg,#001a33,#003366,#001a4d)',
+      badge: '웹', badgeClass: 'badge-web', date: '2025',
+      title: 'KWV — 외국인 근로자 관리 플랫폼',
+      desc: '외국인 계절근로자 통합 관리 B2G 플랫폼',
+      fullDesc: '대한민국 지자체와 외국 정부 간의 MOU 협정을 기반으로 외국인 계절근로자를 통합 관리하는 B2G 플랫폼입니다. QR 출퇴근 관리, AI 이상감지, 실시간 위치 파악 등 입국부터 귀국까지 모든 과정을 하나의 플랫폼에서 관리하며, 현재 15개국 이상 MOU, 50개 이상 지자체, 10,000명 이상 근로자를 대상으로 실서비스 운영 중입니다.',
+      features: [
+        'QR 출퇴근 관리 — GPS 자동 기록 및 근무지 실시간 확인',
+        'AI 이상감지 — 이탈 징후 조기 감지 (3일 연속 결근, GPS 이탈 등)',
+        '성실 출근 포인트 인센티브 & 재입국 가점 시스템',
+        '지도 기반 대시보드 — 지자체별 근로자 분포 실시간 파악',
+        'Excel/PDF 종합 리포트 자동 생성',
+        'MOU 국제 협정 현황 체계적 관리',
+        '5개 언어 다국어 지원 (한국어·영어·베트남어·태국어·타갈로그어)'
+      ],
+      stack: ['HTML/CSS', 'JavaScript', 'Glassmorphism', 'Intersection Observer', 'Responsive Design', 'i18n'],
+      github: null, demo: 'https://www.koreaworkingvisa.com/kwv-landing.html'
+    },
+    {
+      emoji: '🤟', image: 'slive.png', bg: 'linear-gradient(135deg,#1a0533,#2d1b69,#1a0a2e)',
+      badge: 'AI', badgeClass: 'badge-ml', date: '2025.12',
+      title: 'SLIVE — AI 한국 수어 인식 시스템',
+      desc: 'MediaPipe & TensorFlow.js 기반 한국 수어 실시간 인식·번역 웹 애플리케이션',
+      fullDesc: 'MediaPipe Hands와 TensorFlow.js를 활용하여 웹캠으로 한국 수어를 실시간 인식하고 번역하는 AI 시스템입니다. 브라우저에서 직접 모델을 학습할 수 있으며, Baseline · ResNet · DenseNet · EfficientNet 4가지 CNN 모델의 성능을 비교할 수 있는 리더보드 기능도 제공합니다. Google Gemini AI를 연동하여 고도화된 수어 패턴 분석을 지원합니다.',
+      features: [
+        '실시간 웹캠 수어 제스처 인식 (93%+ 정확도)',
+        '브라우저 내 TensorFlow.js 모델 직접 학습',
+        '30+ 한국 수어 제스처 지원 (인사, 감정, 숫자 등)',
+        '4가지 CNN 모델 성능 비교 리더보드',
+        'Web Speech API 기반 TTS 음성 출력',
+        'Google Gemini AI 수어 패턴 분석 연동',
+        '실시간 학습 그래프 & 데이터 시각화 (Chart.js)'
+      ],
+      stack: ['Python', 'Flask', 'TensorFlow.js', 'MediaPipe', 'JavaScript', 'Chart.js', 'Gemini AI', 'Web Speech API'],
+      github: 'https://github.com/dlalsdyd01/Slive_prj', demo: null
+    },
+    {
+      emoji: '💹', image: 'Upbit.png', bg: 'linear-gradient(135deg,#0a1f0a,#0d3b1a,#0a2818)',
+      badge: 'AI', badgeClass: 'badge-ml', date: '2026.01',
+      title: 'Upbit AI 자동매매 & 코인 추천',
+      desc: 'PPO 강화학습 기반 업비트 가상화폐 자동매매 및 AI 코인 추천 시스템',
+      fullDesc: 'Stable-Baselines3의 PPO(Proximal Policy Optimization) 강화학습 알고리즘을 활용한 업비트 가상화폐 자동매매 시스템입니다. SMA, EMA, MACD, RSI, 볼린저 밴드 등 20가지 이상의 기술적 지표를 분석하여 TOP 10 코인을 추천하고, FastAPI 기반 실시간 웹 대시보드(WebSocket, 다크모드 UI)를 제공합니다. 뉴스 감성 분석 기반 매매 신호와 백테스팅 기능도 포함되어 있습니다.',
+      features: [
+        'PPO 강화학습 알고리즘 기반 자동매매 봇',
+        '20+ 기술적 지표 분석 (SMA, EMA, MACD, RSI, 볼린저 밴드, Stochastic 등)',
+        'WebSocket 실시간 가격 업데이트 (3초 간격)',
+        'TOP 10 코인 AI 추천 시스템',
+        '백테스팅 시스템으로 전략 성과 검증',
+        '뉴스 감성 분석 기반 매매 신호 생성',
+        '다크모드 반응형 웹 대시보드 (Tailwind CSS)'
+      ],
+      stack: ['Python', 'FastAPI', 'PyTorch', 'Stable-Baselines3', 'TA-Lib', 'Pandas', 'WebSocket', 'Tailwind CSS'],
+      github: 'https://github.com/dlalsdyd01/Upbit_beta', demo: null
+    },
+    {
+      emoji: '🎰', image: 'lotto.png', bg: 'linear-gradient(135deg,#1a1000,#3b2800,#1a1500)',
+      badge: '웹', badgeClass: 'badge-web', date: '2026.02',
+      title: '로또 번호 분석 웹앱',
+      desc: '실시간 로또 당첨번호 통계 분석 및 AI 기반 번호 예측 서비스 — 도메인 구입 & 서버 직접 구축',
+      fullDesc: '2002년 첫 회차부터 현재까지 모든 로또 당첨 데이터를 수집·분석하여 통계적 인사이트를 제공하고, 가중 확률 기반 AI 번호 예측 기능을 제공하는 웹 애플리케이션입니다. 단순 개발에 그치지 않고 도메인(lottoanalytics.co.kr)을 직접 구입하고 서버를 구축하여 실서비스로 배포했습니다.',
+      features: [
+        '전체 회차 데이터 분석 (2002년~현재)',
+        '번호별 출현 빈도 · 핫/콜드 번호 통계',
+        '가중 확률 기반 AI 예측 — 5세트 자동 생성',
+        '구간 · 홀짝 · 연속번호 패턴 분석',
+        '자동 캐싱 & 백그라운드 실시간 데이터 업데이트',
+        '도메인 직접 구입 및 서버 구축·배포 (lottoanalytics.co.kr)'
+      ],
+      stack: ['Python', 'Flask', 'Pandas', 'NumPy', 'HTML/CSS', 'Gunicorn', 'Render'],
+      github: 'https://github.com/dlalsdyd01/lotto-analytics', demo: 'https://lottoanalytics.co.kr/'
+    },
+    {
+      emoji: '🤖', image: 'pothole.png', bg: 'linear-gradient(135deg,#0a0f1a,#0f1f2e,#0a1520)',
+      badge: 'AI', badgeClass: 'badge-ml', date: '2025.05',
+      title: 'YOLOv5 포트홀 감지 로봇 제어',
+      desc: '실시간 웹캠으로 포트홀을 감지해 시리얼 통신으로 로봇을 자동 제어하는 AI 시스템',
+      fullDesc: 'YOLOv5 객체 감지 모델을 활용하여 실시간 웹캠 영상에서 도로 포트홀을 탐지하고, 감지 결과에 따라 시리얼 통신으로 로봇에 명령을 전송하는 시스템입니다. 멀티스레딩 구조로 GUI 응답성을 유지하며, 포트홀이 일정 시간 사라지면 3초 후 기본 자세로 자동 복귀합니다.',
+      features: [
+        'YOLOv5 실시간 포트홀 객체 감지',
+        '감지 시 로봇 동작 명령 자동 전송 (시리얼 통신)',
+        '미감지 지속 시 3초 후 기본 자세 자동 복귀',
+        '시리얼 포트 선택 GUI 제공',
+        '멀티스레딩으로 GUI 끊김 없이 처리'
+      ],
+      stack: ['Python', 'YOLOv5', 'OpenCV', 'PySerial', 'Tkinter'],
+      github: 'https://github.com/dlalsdyd01/RobotControl', demo: null
+    }
+  ];
+
+  // render cards
+  const grid = document.getElementById('projectsGrid');
+  projects.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'project-card fade-up';
+    el.style.animationDelay = (i * 0.08) + 's';
+    el.innerHTML = `
+      <div class="project-thumb" style="background:${p.bg}">
+        ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">` : p.emoji}
+      </div>
+      <div class="project-body">
+        <div class="project-badges"><span class="badge ${p.badgeClass}">${p.badge}</span></div>
+        <div class="project-title">${p.title}</div>
+        <p class="project-desc">${p.desc}</p>
+        <div class="project-stack">${p.stack.slice(0,4).map(s=>`<span class="stack-chip">${s}</span>`).join('')}</div>
+        <div class="project-footer">
+          <div class="project-links">
+            ${p.demo
+              ? `<a href="${p.demo}" class="icon-btn" title="사이트로 가기" onclick="event.stopPropagation()">↗</a>`
+              : `<a href="${p.github}" class="icon-btn" title="GitHub" onclick="event.stopPropagation()">⌥</a>`}
+          </div>
+          <span class="project-date">${p.date}</span>
+        </div>
+      </div>
+    `;
+    el.addEventListener('click', () => openModal(i));
+    grid.appendChild(el);
+  });
+
+  // ── MODAL ──
+  function openModal(i) {
+    const p = projects[i];
+    document.getElementById('modalHeader').style.background = p.bg;
+    document.getElementById('modalHeader').querySelector('.modal-close') || null;
+    document.getElementById('modalHeader').innerHTML = p.image
+      ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"><button class="modal-close" onclick="closeModalBtn()" style="position:absolute;top:16px;right:16px;">✕</button>`
+      : `<span style="font-size:4rem">${p.emoji}</span><button class="modal-close" onclick="closeModalBtn()">✕</button>`;
+    document.getElementById('modalBadges').innerHTML = `<span class="badge ${p.badgeClass}">${p.badge}</span>`;
+    document.getElementById('modalTitle').textContent = p.title;
+    document.getElementById('modalSub').textContent = p.date;
+    document.getElementById('modalDesc').textContent = p.fullDesc;
+    document.getElementById('modalFeatures').innerHTML = p.features.map(f=>`<li>${f}</li>`).join('');
+    document.getElementById('modalTags').innerHTML = p.stack.map(s=>`<span class="tag">${s}</span>`).join('');
+    document.getElementById('modalActions').innerHTML = `
+      ${p.github ? `<a href="${p.github}" class="btn btn-outline" style="font-size:0.85rem">🐙 GitHub 보기</a>` : ''}
+      ${p.demo ? `<a href="${p.demo}" class="btn btn-primary" style="font-size:0.85rem">↗ 사이트로 가기</a>` : ''}
+    `;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
+  }
+  function closeModalBtn() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
+
+  // ── SCROLL FADE ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── CURSOR ──
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx+'px'; dot.style.top = my+'px'; });
+  (function animRing() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+</script>
+</body>
+</html>
