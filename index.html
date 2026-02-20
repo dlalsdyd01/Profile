@@ -302,12 +302,12 @@
     .badge-solo { background: rgba(251,191,36,0.15); color: #fbbf24; }
     .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
     .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
     .stack-chip {
       padding: 3px 10px; font-size: 0.72rem; border-radius: 6px;
       background: var(--bg3); color: var(--muted); border: 1px solid var(--border);
     }
-    .project-footer { display: flex; justify-content: space-between; align-items: center; }
+    .project-footer { display: none; }
     .project-links { display: flex; gap: 10px; }
     .icon-btn {
       width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
@@ -1055,13 +1055,11 @@
         </div>
         <div class="project-title">${p.title}</div>
         <p class="project-desc">${p.desc}</p>
-        <div class="project-stack">${p.stack.slice(0,4).map(s=>`<span class="stack-chip">${s}</span>`).join('')}</div>
-        <div class="project-footer">
-          <div class="project-links">
-            ${p.demo
-              ? `<a href="${p.demo}" class="icon-btn" title="사이트로 가기" onclick="event.stopPropagation()">↗</a>`
-              : `<a href="${p.github}" class="icon-btn" title="GitHub" onclick="event.stopPropagation()">⌥</a>`}
-          </div>
+        <div class="project-stack">
+          ${p.stack.slice(0,4).map(s=>`<span class="stack-chip">${s}</span>`).join('')}
+          ${p.demo
+            ? `<a href="${p.demo}" class="icon-btn" title="사이트로 가기" onclick="event.stopPropagation()">↗</a>`
+            : `<a href="${p.github}" class="icon-btn" title="GitHub" onclick="event.stopPropagation()">⌥</a>`}
         </div>
       </div>
     `;
