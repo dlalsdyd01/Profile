@@ -270,6 +270,8 @@
     .badge-app { background: rgba(67,233,123,0.15); color: var(--accent3); }
     .badge-api { background: rgba(255,214,0,0.15); color: #ffd600; }
     .badge-ml { background: rgba(255,101,132,0.15); color: var(--accent2); }
+    .badge-team { background: rgba(56,189,248,0.15); color: #38bdf8; }
+    .badge-solo { background: rgba(251,191,36,0.15); color: #fbbf24; }
     .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
     .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
     .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
@@ -863,7 +865,7 @@
   const projects = [
     {
       emoji: '🌏', image: 'KWV.png', bg: 'linear-gradient(135deg,#001a33,#003366,#001a4d)',
-      badge: '웹', badgeClass: 'badge-web', date: '2025',
+      badge: '웹', badgeClass: 'badge-web', type: '팀 프로젝트', typeClass: 'badge-team', date: '2025',
       title: 'KWV — 외국인 근로자 관리 플랫폼',
       desc: '외국인 계절근로자 통합 관리 B2G 플랫폼',
       fullDesc: '대한민국 지자체와 외국 정부 간의 MOU 협정을 기반으로 외국인 계절근로자를 통합 관리하는 B2G 플랫폼입니다. QR 출퇴근 관리, AI 이상감지, 실시간 위치 파악 등 입국부터 귀국까지 모든 과정을 하나의 플랫폼에서 관리하며, 현재 15개국 이상 MOU, 50개 이상 지자체, 10,000명 이상 근로자를 대상으로 실서비스 운영 중입니다.',
@@ -881,7 +883,7 @@
     },
     {
       emoji: '🤟', image: 'Slive.png', bg: 'linear-gradient(135deg,#1a0533,#2d1b69,#1a0a2e)',
-      badge: 'AI', badgeClass: 'badge-ml', date: '2025.12',
+      badge: 'AI', badgeClass: 'badge-ml', type: '팀 프로젝트', typeClass: 'badge-team', date: '2025.12',
       title: 'SLIVE — AI 한국 수어 인식 시스템',
       desc: 'MediaPipe & TensorFlow.js 기반 한국 수어 실시간 인식·번역 웹 애플리케이션',
       fullDesc: 'MediaPipe Hands와 TensorFlow.js를 활용하여 웹캠으로 한국 수어를 실시간 인식하고 번역하는 AI 시스템입니다. 브라우저에서 직접 모델을 학습할 수 있으며, Baseline · ResNet · DenseNet · EfficientNet 4가지 CNN 모델의 성능을 비교할 수 있는 리더보드 기능도 제공합니다. Google Gemini AI를 연동하여 고도화된 수어 패턴 분석을 지원합니다.',
@@ -899,7 +901,7 @@
     },
     {
       emoji: '💹', image: 'Upbit.png', bg: 'linear-gradient(135deg,#0a1f0a,#0d3b1a,#0a2818)',
-      badge: 'AI', badgeClass: 'badge-ml', date: '2026.01',
+      badge: 'AI', badgeClass: 'badge-ml', type: '팀 프로젝트', typeClass: 'badge-team', date: '2026.01',
       title: 'Upbit AI 자동매매 & 코인 추천',
       desc: 'PPO 강화학습 기반 업비트 가상화폐 자동매매 및 AI 코인 추천 시스템',
       fullDesc: 'Stable-Baselines3의 PPO(Proximal Policy Optimization) 강화학습 알고리즘을 활용한 업비트 가상화폐 자동매매 시스템입니다. SMA, EMA, MACD, RSI, 볼린저 밴드 등 20가지 이상의 기술적 지표를 분석하여 TOP 10 코인을 추천하고, FastAPI 기반 실시간 웹 대시보드(WebSocket, 다크모드 UI)를 제공합니다. 뉴스 감성 분석 기반 매매 신호와 백테스팅 기능도 포함되어 있습니다.',
@@ -917,7 +919,7 @@
     },
     {
       emoji: '🎰', image: 'Lotto.png', bg: 'linear-gradient(135deg,#1a1000,#3b2800,#1a1500)',
-      badge: '웹', badgeClass: 'badge-web', date: '2026.02',
+      badge: '웹', badgeClass: 'badge-web', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2026.02',
       title: '로또 번호 분석 웹앱',
       desc: '실시간 로또 당첨번호 통계 분석 및 AI 기반 번호 예측 서비스 — 도메인 구입 · 서버 구축 · Google AdSense 수익창출 운영 중',
       fullDesc: '2002년 첫 회차부터 현재까지 모든 로또 당첨 데이터를 수집·분석하여 통계적 인사이트를 제공하고, 가중 확률 기반 AI 번호 예측 기능을 제공하는 웹 애플리케이션입니다. 단순 개발에 그치지 않고 도메인(lottoanalytics.co.kr)을 직접 구입하고 서버를 구축하여 실서비스로 배포했으며, Google Analytics로 방문자 데이터를 분석하고 Google AdSense를 연동해 광고 수익까지 창출하고 있는 실제 운영 서비스입니다.',
@@ -936,7 +938,7 @@
     },
     {
       emoji: '🤖', image: 'Pothole.png', bg: 'linear-gradient(135deg,#0a0f1a,#0f1f2e,#0a1520)',
-      badge: 'AI', badgeClass: 'badge-ml', date: '2025.05',
+      badge: 'AI', badgeClass: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2025.05',
       title: 'YOLOv5 포트홀 감지 로봇 제어',
       desc: '실시간 웹캠으로 포트홀을 감지해 시리얼 통신으로 로봇을 자동 제어하는 AI 시스템',
       fullDesc: 'YOLOv5 객체 감지 모델을 활용하여 실시간 웹캠 영상에서 도로 포트홀을 탐지하고, 감지 결과에 따라 시리얼 통신으로 로봇에 명령을 전송하는 시스템입니다. 멀티스레딩 구조로 GUI 응답성을 유지하며, 포트홀이 일정 시간 사라지면 3초 후 기본 자세로 자동 복귀합니다.',
@@ -963,7 +965,10 @@
         ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">` : p.emoji}
       </div>
       <div class="project-body">
-        <div class="project-badges"><span class="badge ${p.badgeClass}">${p.badge}</span></div>
+        <div class="project-badges">
+          <span class="badge ${p.badgeClass}">${p.badge}</span>
+          ${p.type ? `<span class="badge ${p.typeClass}">${p.type}</span>` : ''}
+        </div>
         <div class="project-title">${p.title}</div>
         <p class="project-desc">${p.desc}</p>
         <div class="project-stack">${p.stack.slice(0,4).map(s=>`<span class="stack-chip">${s}</span>`).join('')}</div>
@@ -989,7 +994,7 @@
     document.getElementById('modalHeader').innerHTML = p.image
       ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"><button class="modal-close" onclick="closeModalBtn()" style="position:absolute;top:16px;right:16px;">✕</button>`
       : `<span style="font-size:4rem">${p.emoji}</span><button class="modal-close" onclick="closeModalBtn()">✕</button>`;
-    document.getElementById('modalBadges').innerHTML = `<span class="badge ${p.badgeClass}">${p.badge}</span>`;
+    document.getElementById('modalBadges').innerHTML = `<span class="badge ${p.badgeClass}">${p.badge}</span>${p.type ? ` <span class="badge ${p.typeClass}">${p.type}</span>` : ''}`;
     document.getElementById('modalTitle').textContent = p.title;
     document.getElementById('modalSub').textContent = p.date;
     document.getElementById('modalDesc').textContent = p.fullDesc;
