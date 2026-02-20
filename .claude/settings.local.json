@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo view:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(/c/Users/USER/AppData/Local/Programs/Python/Python312/python:*)",
+      "Bash(OUTDIR=\"/c/Users/USER/dev/LEEMINYONG\")",
+      "Bash(PYTHON=\"/c/Users/USER/AppData/Local/Programs/Python/Python312/python\")",
+      "Bash(__NEW_LINE_3d42b43461278004__ echo \"=== SLIVE_PRJ README ===\")",
+      "Bash($PYTHON -c \":*)",
+      "Bash(__NEW_LINE_9f90ecbc9aa6477e__ $PYTHON -c \":*)",
+      "Bash(__NEW_LINE_96d41c0d8ab6ea99__ $PYTHON -c \":*)",
+      "Bash(__NEW_LINE_22b2185fa9e37402__ echo \"=== SLIVE_PRJ FILE TREE ===\")",
+      "Bash($PYTHON:*)",
+      "Bash(__NEW_LINE_e26df1298da0015f__ echo \"=== UPBIT_BETA FILE TREE ===\")",
+      "Bash(__NEW_LINE_f088f64e4fc7f81c__ echo \"=== SLIVE_PRJ TOPICS ===\")",
+      "Bash(__NEW_LINE_f088f64e4fc7f81c__ echo \"\")",
+      "Bash(CURL=\"/mingw64/bin/curl\")",
+      "Bash(__NEW_LINE_9266d50b668d9aa3__ $CURL -s \"https://api.github.com/repos/dlalsdyd01/Slive_prj/contents/SLIVE_prj3.1.2/README.md\" -o \"/c/Users/USER/dev/LEEMINYONG/slive_inner_readme.json\")",
+      "Bash(__NEW_LINE_9266d50b668d9aa3__ $PYTHON -c \":*)",
+      "Bash(command -v:*)",
+      "Bash(echo:*)",
+      "Bash(cmd.exe /c \"where gh\")",
+      "Bash(cmd.exe /c \"where gh 2>&1\")",
+      "Bash(cmd.exe /c \"where gh & echo EXIT:%ERRORLEVEL%\")",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(python:*)",
+      "WebFetch(domain:www.koreaworkingvisa.com)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
