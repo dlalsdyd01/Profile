@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>개발자 포트폴리오</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
     :root {
       --bg: #0a0a0f;
@@ -229,7 +230,7 @@
       padding: 28px; transition: border-color 0.25s, transform 0.25s;
     }
     .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .skill-icon { font-size: 2rem; margin-bottom: 14px; }
+    .skill-icon { font-size: 2rem; margin-bottom: 14px; color: var(--accent); }
     .skill-title { font-weight: 700; margin-bottom: 14px; font-size: 1rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
@@ -674,7 +675,7 @@
   </div>
   <div class="skills-grid fade-up">
     <div class="skill-card">
-      <div class="skill-icon">🎨</div>
+      <div class="skill-icon"><i class="bi bi-code-slash"></i></div>
       <div class="skill-title">Frontend</div>
       <div class="skill-tags">
         <span class="tag">HTML / CSS</span>
@@ -684,7 +685,7 @@
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
+      <div class="skill-icon"><i class="bi bi-server"></i></div>
       <div class="skill-title">Backend</div>
       <div class="skill-tags">
         <span class="tag green">Python</span>
@@ -694,7 +695,7 @@
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🤖</div>
+      <div class="skill-icon"><i class="bi bi-cpu"></i></div>
       <div class="skill-title">AI / ML</div>
       <div class="skill-tags">
         <span class="tag yellow">PyTorch</span>
@@ -706,7 +707,7 @@
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🔧</div>
+      <div class="skill-icon"><i class="bi bi-tools"></i></div>
       <div class="skill-title">Deploy & Tools</div>
       <div class="skill-tags">
         <span class="tag pink">Git / GitHub</span>
@@ -720,7 +721,7 @@
     <div class="section-tag" style="margin-bottom:24px;">Creative Tools</div>
     <div class="skills-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
       <div class="skill-card">
-        <div class="skill-icon">🎨</div>
+        <div class="skill-icon"><i class="bi bi-pen"></i></div>
         <div class="skill-title">UI / UX 디자인</div>
         <div class="skill-tags">
           <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Figma</span>
@@ -728,7 +729,7 @@
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">🖼️</div>
+        <div class="skill-icon"><i class="bi bi-box"></i></div>
         <div class="skill-title">그래픽 & 3D</div>
         <div class="skill-tags">
           <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">Photoshop</span>
@@ -736,7 +737,7 @@
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">🎬</div>
+        <div class="skill-icon"><i class="bi bi-film"></i></div>
         <div class="skill-title">영상 편집</div>
         <div class="skill-tags">
           <span class="tag" style="background:rgba(255,101,132,0.12);border-color:rgba(255,101,132,0.3);color:#ff6584;">After Effects</span>
