@@ -463,7 +463,13 @@
       background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
     }
     .contact-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; position: relative; }
-    .contact-card p { color: var(--muted); margin-bottom: 36px; position: relative; }
+    .contact-card p { color: var(--muted); margin-bottom: 28px; position: relative; }
+    .contact-info { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; position: relative; }
+    .contact-info-item { display: flex; align-items: center; gap: 10px; }
+    .contact-info-item i { font-size: 1.2rem; color: var(--accent); }
+    .contact-info-item a, .contact-info-item span { font-size: 0.95rem; font-weight: 600; color: var(--text); text-decoration: none; }
+    .contact-info-item a:hover { color: var(--accent); }
+    .contact-info-divider { width: 1px; height: 40px; background: var(--border); }
     .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
     .contact-link {
       display: flex; align-items: center; gap: 10px;
@@ -832,6 +838,22 @@
   <div class="contact-card fade-up">
     <h2>함께 일해요 👋</h2>
     <p>새로운 프로젝트나 기회에 항상 열려 있습니다.<br>아래 링크로 편하게 연락주세요.</p>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <i class="bi bi-envelope-fill"></i>
+        <a href="mailto:kv0435029@naver.com">kv0435029@naver.com</a>
+      </div>
+      <div class="contact-info-divider"></div>
+      <div class="contact-info-item">
+        <i class="bi bi-telephone-fill"></i>
+        <span>010-2782-5603</span>
+      </div>
+      <div class="contact-info-divider"></div>
+      <div class="contact-info-item">
+        <i class="bi bi-github"></i>
+        <a href="https://github.com/dlalsdyd01" target="_blank">github.com/dlalsdyd01</a>
+      </div>
+    </div>
     <div class="contact-links">
       <a href="mailto:kv0435029@naver.com" class="contact-link">📧 이메일 보내기</a>
       <a href="https://github.com/dlalsdyd01" target="_blank" class="contact-link">🐙 GitHub</a>
