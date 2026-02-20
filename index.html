@@ -75,9 +75,24 @@
     /* footer */
     [data-theme="light"] footer { color: #888; }
 
+    /* ── FLOATING SIDEBAR ── */
+    .float-sidebar {
+      position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+      z-index: 150; display: flex; flex-direction: column; gap: 10px;
+    }
+    .float-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all 0.2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .float-btn:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.12); }
+
     /* ── BACK TO TOP ── */
     .back-to-top {
-      position: fixed; bottom: 36px; right: 36px; z-index: 200;
+      position: fixed; bottom: 36px; right: 86px; z-index: 200;
       width: 48px; height: 48px; border-radius: 50%;
       background: var(--accent); color: #fff; border: none; cursor: pointer;
       font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
@@ -812,6 +827,15 @@
     </div>
   </div>
 </section>
+
+<!-- FLOATING SIDEBAR -->
+<div class="float-sidebar">
+  <a href="mailto:kv0435029@naver.com" class="float-btn" title="이메일"><i class="bi bi-envelope"></i></a>
+  <a href="https://github.com/dlalsdyd01" target="_blank" class="float-btn" title="GitHub"><i class="bi bi-github"></i></a>
+  <a href="#about" class="float-btn" title="소개"><i class="bi bi-person"></i></a>
+  <a href="#projects" class="float-btn" title="프로젝트"><i class="bi bi-grid"></i></a>
+  <a href="#contact" class="float-btn" title="연락하기"><i class="bi bi-chat"></i></a>
+</div>
 
 <!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
