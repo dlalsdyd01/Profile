@@ -353,7 +353,7 @@
     .modal-sub { color: var(--muted); margin-bottom: 24px; font-size: 0.9rem; }
     .modal-section { margin-bottom: 24px; }
     .modal-section h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 10px; }
-    .modal-desc { color: rgba(232,232,240,0.8); font-size: 0.95rem; line-height: 1.8; }
+    .modal-desc { color: rgba(232,232,240,0.8); font-size: 0.95rem; line-height: 1.8; word-break: keep-all; }
     .feature-list { list-style: none; }
     .feature-list li {
       padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem;
@@ -1040,7 +1040,7 @@
       emoji: '💬', image: 'images/My_chatbot.png', bg: 'linear-gradient(135deg,#0a1a2e,#0d2a4a,#0a1f3a)',
       badge: 'AI', badgeClass: 'badge-ml', badge2: '웹', badgeClass2: 'badge-web', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2025',
       title: 'My Chatbot — RAG 기반 AI 챗봇',
-      desc: 'PDF/TXT 문서 업로드 기반 실시간 스트리밍 AI 대화 시스템',
+      desc: 'PDF/TXT 문서 업로드 기반 </br>실시간 스트리밍 AI 대화 시스템',
       fullDesc: 'RAG(Retrieval-Augmented Generation) 기술을 활용한 AI 챗봇 애플리케이션입니다. PDF/TXT 파일을 업로드하면 문서 내용을 기반으로 Groq API(llama-3.3-70b)가 실시간 스트리밍으로 응답합니다. JWT 인증, 대화 검색, 자동 제목 생성, 마크다운 렌더링 등 실제 서비스 수준의 기능을 갖추고 있습니다.',
       features: [
         'PDF/TXT 파일 업로드 기반 RAG 응답',
