@@ -18,62 +18,6 @@
       --muted: #6b6b80;
       --card: #13131d;
     }
-    [data-theme="light"] {
-      --bg: #f5f5f7;
-      --bg2: #eaeaf0;
-      --bg3: #dddde8;
-      --border: rgba(0,0,0,0.1);
-      --text: #1a1a2e;
-      --muted: #6b6b80;
-      --card: #ffffff;
-    }
-    [data-theme="light"] nav { background: rgba(245,245,247,0.92); }
-
-    /* 텍스트 */
-    [data-theme="light"] .hero-name { color: #1a1a2e; }
-    [data-theme="light"] .hero-role { color: #444; }
-    [data-theme="light"] .hero-desc { color: #444; }
-    [data-theme="light"] .section-title { color: #1a1a2e; }
-    [data-theme="light"] .section-sub { color: #555; }
-    [data-theme="light"] .about-text { color: #333; }
-    [data-theme="light"] .modal-desc { color: #333; }
-    [data-theme="light"] .feature-list li { color: #333; }
-    [data-theme="light"] .project-title { color: #1a1a2e; }
-    [data-theme="light"] .project-desc { color: #555; }
-    [data-theme="light"] .award-title { color: #1a1a2e; }
-    [data-theme="light"] .tl-title { color: #1a1a2e; }
-    [data-theme="light"] .cert-name { color: #1a1a2e; }
-    [data-theme="light"] .info-value { color: #1a1a2e; }
-    [data-theme="light"] .skill-title { color: #1a1a2e; }
-    [data-theme="light"] .about-content h2 { color: #1a1a2e; }
-
-    /* 수상 silver 텍스트 */
-    [data-theme="light"] .award-rank.silver { color: #666; border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.06); }
-    [data-theme="light"] .award-year { color: #888; }
-
-    /* 태그 yellow — 라이트에서 더 진하게 */
-    [data-theme="light"] .tag.yellow { color: #b8860b; background: rgba(184,134,11,0.1); border-color: rgba(184,134,11,0.3); }
-
-    /* 스택 칩 */
-    [data-theme="light"] .stack-chip { background: rgba(108,99,255,0.1); color: #4a43cc; border: 1px solid rgba(108,99,255,0.2); }
-
-    /* 히어로 stat 카드 */
-    [data-theme="light"] .stat-card { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.1); }
-    [data-theme="light"] .stat-value { color: #6c63ff; }
-    [data-theme="light"] .stat-label { color: #555; }
-
-    /* 프로젝트 카드 날짜 */
-    [data-theme="light"] .project-date { color: #888; }
-
-    /* 연락 섹션 */
-    [data-theme="light"] .contact-card { background: var(--card); }
-    [data-theme="light"] .contact-card h2 { color: #1a1a2e; }
-    [data-theme="light"] .contact-card p { color: #555; }
-    [data-theme="light"] .contact-link { color: #1a1a2e; border-color: rgba(0,0,0,0.15); }
-    [data-theme="light"] .contact-link:hover { border-color: var(--accent); }
-
-    /* footer */
-    [data-theme="light"] footer { color: #888; }
 
     /* ── FLOATING SIDEBAR ── */
     .float-sidebar {
@@ -116,19 +60,11 @@
     .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .back-to-top:hover { background: var(--accent2); box-shadow: 0 4px 24px rgba(255,101,132,0.4); transform: translateY(-2px); }
 
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 50px; padding: 6px 14px; cursor: pointer;
-      font-size: 1rem; transition: all 0.2s; display: flex; align-items: center; gap: 6px;
-      color: var(--text);
-    }
-    .theme-toggle:hover { border-color: var(--accent); }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
+      background: #03060f;
       color: var(--text);
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
@@ -144,10 +80,13 @@
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 60px;
+      padding: 36px 60px;
       background: rgba(10,10,15,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+    }
+    .nav-links {
+      position: absolute; left: 50%; transform: translateX(-50%);
     }
     .nav-logo {
       font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;
@@ -156,7 +95,7 @@
     }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 1rem;
+      color: var(--muted); text-decoration: none; font-size: 1.15rem;
       font-weight: 700; letter-spacing: 0.5px;
       transition: color 0.3s, font-size 0.3s, font-weight 0.3s, opacity 0.3s;
       position: relative; padding-bottom: 4px;
@@ -229,7 +168,7 @@
     .hero-role {
       font-size: 1.15rem; color: var(--muted); margin-bottom: 28px;
     }
-    .hero-desc { color: rgba(232,232,240,0.7); max-width: 420px; margin-bottom: 40px; }
+    .hero-desc { color: rgba(232,232,240,0.7); max-width: 420px; margin-bottom: 40px; font-size: 1.2rem; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
       padding: 12px 28px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
@@ -276,14 +215,14 @@
       text-transform: uppercase; margin-bottom: 16px;
     }
     .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; margin-bottom: 12px; }
-    .section-sub { color: var(--muted); max-width: 500px; margin: 0 auto; }
+    .section-sub { color: var(--text); max-width: 600px; margin: 0 auto; font-size: 1.2rem; font-weight: 600; }
     hr.divider {
       border: none; border-top: 1px solid var(--border);
       max-width: 1100px; margin: 0 auto;
     }
 
     /* ── SKILLS ── */
-    #skills { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    #skills { background: transparent; max-width: 100%; padding: 100px 60px; }
     #skills > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
     .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .skill-card {
@@ -556,8 +495,12 @@
     .modal-actions { display: flex; gap: 12px; margin-top: 28px; }
 
     /* ── ABOUT ── */
-    #about { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    #about { background: transparent; max-width: 100%; padding: 100px 60px; }
     .about-inner { max-width: 1100px; margin: 0 auto; }
+    .about-mobile-header { display: none; }
+    .about-avatar-mobile { display: none; }
+    .about-name-desktop { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+    .about-role-desktop { color: var(--accent); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; }
     .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: stretch; }
     .about-avatar-wrap {
       background: var(--card); border: 1px solid var(--border); border-radius: 24px;
@@ -569,13 +512,13 @@
       background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(255,101,132,0.1));
     }
     .about-content h2 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
-    .about-role { color: var(--accent); font-size: 0.95rem; margin-bottom: 20px; }
-    .about-text { color: rgba(232,232,240,0.7); line-height: 1.9; margin-bottom: 14px; word-break: keep-all; }
+    .about-role { color: var(--accent); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; }
+    .about-text { color: rgba(232,232,240,0.88); line-height: 1.9; margin-bottom: 14px; word-break: keep-all; font-weight: 500; font-size: 1.2rem; }
     .about-text:last-of-type { margin-bottom: 28px; }
     .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .about-info-item { background: var(--bg3); border-radius: 10px; padding: 14px 16px; }
-    .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
-    .info-value { font-size: 0.9rem; font-weight: 600; }
+    .info-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+    .info-value { font-size: 1.05rem; font-weight: 700; }
 
     /* ── TIMELINE ── */
     .timeline { position: relative; padding-left: 32px; }
@@ -590,14 +533,14 @@
       background: var(--accent); border: 2px solid var(--bg);
       box-shadow: 0 0 0 3px rgba(108,99,255,0.3);
     }
-    .tl-date { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 4px; }
-    .tl-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
-    .tl-sub { font-size: 0.95rem; color: var(--muted); }
+    .tl-date { font-size: 1.1rem; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 4px; }
+    .tl-title { font-weight: 700; font-size: 1.3rem; margin-bottom: 4px; }
+    .tl-sub { font-size: 1.1rem; color: var(--muted); }
 
 
 
     /* ── AWARDS ── */
-    #awards { background: var(--bg2); max-width: 100%; padding: 100px 60px; }
+    #awards { background: transparent; max-width: 100%; padding: 100px 60px; }
     .awards-inner { max-width: 1100px; margin: 0 auto; }
     .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 0; }
     .award-card {
@@ -641,11 +584,11 @@
       background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
     }
     .contact-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; position: relative; }
-    .contact-card p { color: var(--muted); margin-bottom: 28px; position: relative; }
+    .contact-card p { color: var(--muted); margin-bottom: 28px; position: relative; font-size: 1.15rem; font-weight: 700; }
     .contact-info { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 32px; position: relative; }
     .contact-info-item { display: flex; align-items: center; gap: 10px; }
     .contact-info-item i { font-size: 1.2rem; color: var(--accent); }
-    .contact-info-item a, .contact-info-item span { font-size: 0.95rem; font-weight: 600; color: var(--text); text-decoration: none; }
+    .contact-info-item a, .contact-info-item span { font-size: 1.15rem; font-weight: 600; color: var(--text); text-decoration: none; }
     .contact-info-item a:hover { color: var(--accent); }
     .contact-info-divider { display: none; }
     .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
@@ -663,6 +606,47 @@
       border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem;
     }
 
+
+    /* ── INTRO OVERLAY ── */
+    #intro-overlay {
+      position: fixed; inset: 0; z-index: 490;
+      background: #03060f;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+    #intro-overlay.fade-out { opacity: 0; }
+
+    /* ── EARTH CANVAS ── */
+    #earthCanvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; pointer-events: none;
+      opacity: 0.45; filter: blur(2px);
+    }
+
+    /* ── SPACE BACKGROUND ── */
+    #spaceCanvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+    .nebula-blob {
+      position: fixed; border-radius: 50%;
+      filter: blur(90px); opacity: 0.18;
+      pointer-events: none; z-index: 0;
+      animation: nebulaDrift ease-in-out infinite;
+    }
+    @keyframes nebulaDrift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(40px,-30px) scale(1.08); }
+      66%      { transform: translate(-30px,40px) scale(0.94); }
+    }
+    section, #hero, #about, #skills, #projects, #awards, #contact, footer {
+      position: relative; z-index: 1;
+    }
+    .modal-overlay { position: fixed; z-index: 200; }
+    .float-sidebar { z-index: 150; }
+    .back-to-top { z-index: 200; }
+    .cursor { z-index: 9999; }
+
     /* ── CURSOR DOT ── */
     .cursor { pointer-events: none; position: fixed; z-index: 9999; mix-blend-mode: screen; }
     .cursor-dot {
@@ -678,21 +662,175 @@
     .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.3); border-radius: 10px;
+      cursor: pointer; padding: 8px; z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s ease; transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(8,8,14,0.97); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul { list-style: none; text-align: center; padding: 0; }
+    .mobile-menu ul li { margin-bottom: 8px; }
+    .mobile-link {
+      display: block; padding: 16px 48px;
+      font-size: 1.6rem; font-weight: 700; color: rgba(232,232,240,0.7);
+      text-decoration: none; letter-spacing: 2px;
+      transition: color 0.2s, background 0.2s; border-radius: 12px;
+    }
+    .mobile-link:hover, .mobile-link:active { color: var(--accent); background: rgba(108,99,255,0.1); }
+
     @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      section { padding: 70px 24px; }
-      #hero { padding: 100px 24px 40px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      /* 가로 스크롤 방지 */
+      body { overflow-x: hidden; }
+
+      /* NAV */
+      nav { padding: 14px 20px; }
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: flex; }
+      .nav-logo { font-size: 1.4rem; }
+
+      /* FLOAT SIDEBAR & BACK TO TOP */
+      .float-sidebar { display: none !important; }
+      .back-to-top { right: 20px !important; bottom: 20px !important; }
+
+      /* HERO */
+      #hero { padding: 120px 20px 60px; min-height: 100vh; overflow: visible; align-items: flex-start; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; text-align: left; }
       .hero-card { display: none; }
-      #skills, #about { padding: 70px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-avatar-wrap { max-width: 200px; margin: 0 auto; }
-      .contact-card { padding: 40px 24px; }
+      .hero-name { font-size: clamp(1.9rem, 7vw, 2.6rem); line-height: 1.15; }
+      .hero-role { font-size: 0.95rem; margin-bottom: 16px; }
+      .hero-desc { font-size: 0.97rem; max-width: 100%; margin-bottom: 28px; }
+      .hero-btns { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .btn { flex: 1; min-width: 140px; justify-content: center; text-align: center; }
+
+      /* SECTIONS */
+      section { padding: 64px 20px; }
+      .section-header { margin-bottom: 36px; }
+      .section-title { font-size: 1.75rem; }
+      .section-sub { font-size: 0.97rem; }
+
+      /* SKILLS */
+      #skills { padding: 64px 20px; }
+      #skills > * { max-width: 100%; }
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .skill-card { padding: 18px 14px; }
+      .skill-icon { font-size: 1.5rem; margin-bottom: 8px; }
+      .skill-title { font-size: 0.85rem; margin-bottom: 10px; }
+      .tag { font-size: 0.7rem; padding: 3px 8px; }
+
+      /* PROJECTS */
+      #projects { padding: 64px 20px; overflow: visible; }
+      .carousel-scene { height: auto; min-height: 520px; padding: 10px 0; overflow: visible; }
+      .carousel-track { width: 290px; height: 480px; }
+      .carousel-item { width: 290px; height: 480px; }
+      .project-thumb { height: 180px; }
+      .project-body { padding: 14px 16px; }
+      .project-title { font-size: 1rem; }
+      .projects-grid-view { grid-template-columns: 1fr; padding: 0; gap: 14px; }
+      .grid-project-card .project-thumb { height: 150px; }
+      .carousel-controls { flex-wrap: wrap; gap: 12px; }
+
+      /* ABOUT */
+      #about { padding: 64px 20px; }
+      .about-inner { max-width: 100%; }
+      .about-grid { grid-template-columns: 1fr; gap: 0; }
+      /* 데스크탑용 왼쪽 아바타 + 이름 숨기기 */
+      .about-grid > div:first-child { display: none; }
+      .about-name-desktop { display: none !important; }
+      .about-role-desktop { display: none !important; }
+      /* 모바일 헤더: 원형 사진 + 이름/역할 가로 배치 */
+      .about-mobile-header {
+        display: flex !important; align-items: center; gap: 16px; margin-bottom: 20px;
+      }
+      .about-avatar-mobile {
+        display: flex !important;
+        width: 80px !important; height: 80px !important;
+        border-radius: 50% !important; flex-shrink: 0;
+        min-height: unset !important;
+      }
+      .about-content h2 { font-size: 1.4rem; margin-bottom: 2px; }
+      .about-role { font-size: 0.85rem; margin-bottom: 0; }
+      .about-text { font-size: 0.95rem; line-height: 1.75; }
+      .about-info-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+      .about-info-item { padding: 10px 12px; }
+      .info-label { font-size: 0.68rem; }
+      .info-value { font-size: 0.88rem; }
+
+      /* TIMELINE */
+      .tl-title { font-size: 1rem; }
+      .tl-date { font-size: 0.9rem; }
+      .tl-sub { font-size: 0.9rem; }
+
+      /* AWARDS */
+      #awards { padding: 64px 20px; }
+      .awards-inner { max-width: 100%; }
+      .awards-grid { grid-template-columns: 1fr; gap: 16px; }
+      .award-card { padding: 22px 20px; }
+      .award-title { font-size: 0.95rem; }
+
+      /* CONTACT */
+      #contact { padding: 64px 20px; }
+      .contact-card { padding: 36px 20px; max-width: 100%; }
+      .contact-card h2 { font-size: 1.6rem; }
+      .contact-card p { font-size: 0.97rem; }
+      .contact-info-item a, .contact-info-item span { font-size: 1rem; }
+      .contact-links { flex-direction: column; align-items: stretch; }
+      .contact-link { justify-content: center; }
+
+      /* FOOTER */
+      footer { padding: 24px 20px; font-size: 0.78rem; }
+
+      /* MODAL */
+      .modal-overlay { padding: 12px; }
+      .modal { border-radius: 16px; max-height: 92vh; }
+      .modal-body { padding: 20px 18px; }
+      .modal-header { height: 150px; font-size: 3rem; }
+      .modal-title { font-size: 1.25rem; }
+      .modal-actions { flex-direction: column; gap: 8px; }
+      .modal-actions .btn { justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-name { font-size: 1.75rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-info-grid { grid-template-columns: 1fr 1fr; }
+      .hero-btns { flex-direction: column; }
+      .btn { min-width: unset; width: 100%; }
     }
   </style>
 </head>
 <body>
+
+<!-- INTRO OVERLAY -->
+<div id="intro-overlay"></div>
+
+<!-- EARTH GLOBE BACKGROUND (blowROCK style) -->
+<canvas id="earthCanvas"></canvas>
+
+<!-- SPACE BACKGROUND -->
+<canvas id="spaceCanvas"></canvas>
+<div class="nebula-blob" style="width:600px;height:600px;top:-100px;left:-150px;background:radial-gradient(circle,rgba(108,99,255,0.55),transparent 70%);animation-duration:18s;"></div>
+<div class="nebula-blob" style="width:500px;height:500px;top:30%;right:-120px;background:radial-gradient(circle,rgba(255,101,132,0.45),transparent 70%);animation-duration:22s;animation-delay:-7s;"></div>
+<div class="nebula-blob" style="width:700px;height:700px;top:60%;left:20%;background:radial-gradient(circle,rgba(108,99,255,0.3),transparent 70%);animation-duration:26s;animation-delay:-12s;"></div>
+<div class="nebula-blob" style="width:400px;height:400px;bottom:5%;right:10%;background:radial-gradient(circle,rgba(255,101,132,0.35),transparent 70%);animation-duration:20s;animation-delay:-4s;"></div>
+
 
 <!-- CURSOR -->
 <div class="cursor" id="cursorDot"><div class="cursor-dot"></div></div>
@@ -700,7 +838,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">DEV.</div>
+  <div class="nav-logo">LMY.</div>
   <ul class="nav-links">
     <li><a href="#about">소개</a></li>
     <li><a href="#skills">기술</a></li>
@@ -708,8 +846,20 @@
     <li><a href="#awards">수상</a></li>
     <li><a href="#contact">연락</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 다크</button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about" class="mobile-link">소개</a></li>
+    <li><a href="#skills" class="mobile-link">기술</a></li>
+    <li><a href="#projects" class="mobile-link">프로젝트</a></li>
+    <li><a href="#awards" class="mobile-link">수상</a></li>
+    <li><a href="#contact" class="mobile-link">연락</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="hero" style="max-width:100%;padding-top:0;">
@@ -762,17 +912,30 @@
     </div>
     <div class="about-grid">
       <div class="fade-up">
-        <div class="about-avatar-wrap">👨‍💻</div>
+        <div class="about-avatar-wrap">
+          <img src="images/Lmy.png" alt="이민용" style="width:92%;height:92%;object-fit:contain;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+        </div>
       </div>
       <div class="fade-up">
         <div class="about-content">
-          <h2>이민용</h2>
-          <div class="about-role">AI Developer · Full-Stack Engineer</div>
+          <!-- 데스크탑용 이름/역할 -->
+          <h2 class="about-name-desktop">이민용</h2>
+          <div class="about-role about-role-desktop">AI Developer · Full-Stack Engineer</div>
+          <!-- 모바일용: 원형 사진 + 이름/역할 -->
+          <div class="about-mobile-header">
+            <div class="about-avatar-wrap about-avatar-mobile">
+              <img src="images/Lmy.png" alt="이민용" style="width:92%;height:92%;object-fit:contain;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            </div>
+            <div>
+              <h2>이민용</h2>
+              <div class="about-role">AI Developer · Full-Stack Engineer</div>
+            </div>
+          </div>
           <p class="about-text">
-            나사렛대학교 IT인공지능학부를 졸업하고, 우송IT교육센터 채용연계형 SW 전문인재 양성교육 및 바이오헬스 우송캠퍼스 교육과정을 수료했습니다.
+            나사렛대학교 IT인공지능학부를 졸업하고, 우송IT교육센터 </br>채용연계형 SW 전문인재 양성교육 및 바이오헬스 우송캠퍼스 교육과정을 수료했습니다.
           </p>
           <p class="about-text">
-            PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지 end-to-end로 개발할 수 있는 </br>AI 기반 개발자입니다.
+            PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지 </br>end-to-end로 개발할 수 있는 AI 기반 개발자입니다.
           </p>
           <p class="about-text">
             개발 역량 외에도 Figma · Adobe XD를 활용한 UI/UX 설계, Photoshop · 3ds Max를 이용한 그래픽·3D 작업, After Effects · Premiere Pro를 통한 영상 편집까지 가능해 기획부터 개발, 디자인, 콘텐츠 제작을 혼자서도 수행할 수 있습니다.
@@ -971,15 +1134,15 @@
         <div class="award-title">나사렛대학교 제22회 학술제</div>
         <div class="award-org">나사렛대학교 IT인공지능학부</div>
       </div>
-      <div class="award-card silver">
-        <div class="award-rank silver">🥈 최우수상</div>
-        <div class="award-title">초광역 창업역량 강화캠프</div>
-        <div class="award-org">2025 초광역 창업역량 강화캠프</div>
-      </div>
       <div class="award-card bronze">
         <div class="award-rank finalist">🏆 본선 진출</div>
         <div class="award-title">DMC코넷 빅데이터 아이디어 오디션</div>
         <div class="award-org">DMC코넷 주최 · 2025</div>
+      </div>
+      <div class="award-card silver">
+        <div class="award-rank silver">🥈 최우수상</div>
+        <div class="award-title">초광역 창업역량 강화캠프</div>
+        <div class="award-org">2025 초광역 창업역량 강화캠프</div>
       </div>
     </div>
   </div>
@@ -1065,6 +1228,22 @@
     backToTop.classList.toggle('visible', window.scrollY > 400);
   });
 
+  // ── HAMBURGER MENU ──
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
   // ── ACTIVE NAV ──
   const navLinks = document.querySelectorAll('.nav-links a');
   const sectionIds = ['about', 'skills', 'projects', 'awards', 'contact'];
@@ -1084,21 +1263,6 @@
     });
   });
 
-  // ── THEME TOGGLE ──
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  function updateToggleBtn() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.getElementById('themeToggle').textContent = isDark ? '🌙 다크' : '☀️ 라이트';
-  }
-  updateToggleBtn();
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateToggleBtn();
-  }
 
   // ── PROJECT DATA ──
   const projects = [
@@ -1143,7 +1307,7 @@
     {
       emoji: '💹', image: 'images/Upbit.png', bg: 'linear-gradient(135deg,#0a1f0a,#0d3b1a,#0a2818)',
       badge: 'AI', badgeClass: 'badge-ml', type: '팀 프로젝트', typeClass: 'badge-team', date: '2026.01',
-      title: '뉴스감성분석 기반 Upbit AI 자동매매',
+      title: '뉴스감성분석 기반 Upbit AI자동매매',
       desc: 'PPO 강화학습 기반 업비트 가상화폐 </br>자동매매 및 AI 코인 추천 시스템',
       shortDesc: 'PPO 강화학습과 뉴스 감성분석으로 업비트를 자동매매하고, 20가지 기술적 지표로 TOP 10 코인을 추천하는 실시간 대시보드',
       fullDesc: 'Stable-Baselines3의 PPO(Proximal Policy Optimization) 강화학습 알고리즘을 활용한 업비트 가상화폐 자동매매 시스템입니다. SMA, EMA, MACD, RSI, 볼린저 밴드 등 20가지 이상의 기술적 지표를 분석하여 TOP 10 코인을 추천하고, FastAPI 기반 실시간 웹 대시보드(WebSocket, 다크모드 UI)를 제공합니다. 뉴스 감성 분석 기반 매매 신호와 백테스팅 기능도 포함되어 있습니다.',
@@ -1478,6 +1642,261 @@
     rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
     ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
     requestAnimationFrame(animRing);
+  })();
+
+  // ── EARTH GLOBE (blowROCK style) ──
+  (function() {
+    const canvas = document.getElementById('earthCanvas');
+    const ctx    = canvas.getContext('2d');
+    const R      = 500;
+    const TEX_W  = 2560, TEX_H = R * 2;
+
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+
+    // ─ 실제 위성 텍스처 로드 ─
+    const offTex = document.createElement('canvas');
+    offTex.width = TEX_W; offTex.height = TEX_H;
+    const tCtx = offTex.getContext('2d');
+
+    const offCld = document.createElement('canvas');
+    offCld.width = TEX_W; offCld.height = TEX_H;
+    const cCtx = offCld.getContext('2d');
+
+    let texReady = false;
+
+    function loadImg(src) {
+      return new Promise(res => {
+        const img = new Image(); img.crossOrigin = 'anonymous';
+        img.onload = () => res(img);
+        img.onerror = () => res(null);
+        img.src = src;
+      });
+    }
+
+    Promise.all([
+      loadImg('https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/earth_atmos_2048.jpg'),
+      loadImg('https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/earth_clouds_1024.png')
+    ]).then(([earthImg, cloudImg]) => {
+      if (earthImg) tCtx.drawImage(earthImg, 0, 0, TEX_W, TEX_H);
+      if (cloudImg) cCtx.drawImage(cloudImg, 0, 0, TEX_W, TEX_H);
+      texReady = true;
+    });
+
+    let texX = 0, cldX = 0;
+    let scrollSmooth = 0, scrollTarget = 0;
+    window.addEventListener('scroll', () => { scrollTarget = window.scrollY; }, { passive: true });
+
+    // ── INTRO ANIMATION ──
+    const INTRO_DURATION = 2600;
+    let introStartTime = null;
+    let introProgress = 0;
+    let introDone = false;
+    const introOverlay = document.getElementById('intro-overlay');
+    // 인트로 중 지구를 오버레이 위에 표시
+    canvas.style.zIndex = '495';
+
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    function draw() {
+      const W = canvas.width, H = canvas.height;
+      scrollSmooth += (scrollTarget - scrollSmooth) * 0.06;
+      const cx = W * 0.5;
+      const normalCy = Math.max(H * 0.5, H * 0.72 - scrollSmooth * 0.3);
+
+      // 인트로 진행
+      let cy;
+      if (!introDone) {
+        if (!introStartTime) introStartTime = performance.now();
+        introProgress = Math.min((performance.now() - introStartTime) / INTRO_DURATION, 1);
+        // 75% 지점에서 오버레이 페이드아웃 시작
+        if (introProgress >= 0.72 && introOverlay && !introOverlay.classList.contains('fade-out')) {
+          introOverlay.classList.add('fade-out');
+        }
+        if (introProgress >= 1) {
+          introDone = true;
+          canvas.style.zIndex = ''; // CSS 기본값(-1)으로 복귀
+        }
+        const ease = easeOutExpo(introProgress);
+        const startCy = H + R + 80;
+        cy = startCy + (normalCy - startCy) * ease;
+      } else {
+        cy = normalCy;
+      }
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Dark background
+      ctx.fillStyle = '#03060f';
+      ctx.fillRect(0, 0, W, H);
+
+      // Outer atmosphere glow (blowROCK: rgba(33,84,150,0.8))
+      const aOuter = ctx.createRadialGradient(cx, cy, R * 0.96, cx, cy, R * 1.25);
+      aOuter.addColorStop(0,   'rgba(33,84,150,0.85)');
+      aOuter.addColorStop(0.45,'rgba(20,55,120,0.38)');
+      aOuter.addColorStop(1,   'rgba(8,20,60,0)');
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, Math.PI*2);
+      ctx.fillStyle = aOuter; ctx.fill();
+
+      // Clip to sphere
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.clip();
+
+      // Surface (실제 위성 텍스처)
+      if (texReady) {
+        const tx = ((texX % TEX_W) + TEX_W) % TEX_W;
+        ctx.drawImage(offTex, tx - TEX_W, cy - R, TEX_W, R*2);
+        ctx.drawImage(offTex, tx,         cy - R, TEX_W, R*2);
+        ctx.drawImage(offTex, tx + TEX_W, cy - R, TEX_W, R*2);
+
+        const cl = ((cldX % TEX_W) + TEX_W) % TEX_W;
+        ctx.globalAlpha = 0.55;
+        ctx.drawImage(offCld, cl - TEX_W, cy - R, TEX_W, R*2);
+        ctx.drawImage(offCld, cl,         cy - R, TEX_W, R*2);
+        ctx.drawImage(offCld, cl + TEX_W, cy - R, TEX_W, R*2);
+        ctx.globalAlpha = 1;
+      } else {
+        // 로딩 전 임시 ocean 색
+        ctx.fillStyle = '#071828';
+        ctx.beginPath(); ctx.arc(0, 0, R, 0, Math.PI*2); ctx.fill();
+      }
+
+      // Night-side shadow (right dark)
+      const shadow = ctx.createRadialGradient(cx + R*0.5, cy+R*0.1, 0, cx - R*0.15, cy, R*1.05);
+      shadow.addColorStop(0,    'rgba(0,0,0,0)');
+      shadow.addColorStop(0.42, 'rgba(0,0,0,0.08)');
+      shadow.addColorStop(0.78, 'rgba(0,0,8,0.72)');
+      shadow.addColorStop(1,    'rgba(0,0,0,0.94)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = shadow; ctx.fill();
+
+      // Limb darkening
+      const limb = ctx.createRadialGradient(cx, cy, R*0.58, cx, cy, R);
+      limb.addColorStop(0,   'rgba(0,0,0,0)');
+      limb.addColorStop(0.76,'rgba(0,0,0,0)');
+      limb.addColorStop(0.9, 'rgba(0,0,0,0.38)');
+      limb.addColorStop(1,   'rgba(0,0,0,0.78)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = limb; ctx.fill();
+
+      // Sunlight (top-left, blowROCK: rgba(255,255,255,0.5))
+      const sun = ctx.createRadialGradient(cx - R*0.48, cy - R*0.46, 0, cx, cy, R);
+      sun.addColorStop(0,    'rgba(255,255,255,0.32)');
+      sun.addColorStop(0.38, 'rgba(200,218,255,0.09)');
+      sun.addColorStop(1,    'rgba(0,0,0,0)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = sun; ctx.fill();
+
+      // Inner atmosphere edge (blowROCK: rgba(60,105,175,0.4))
+      const aInner = ctx.createRadialGradient(cx, cy, R*0.83, cx, cy, R);
+      aInner.addColorStop(0,   'rgba(60,105,175,0)');
+      aInner.addColorStop(0.55,'rgba(40,82,155,0.1)');
+      aInner.addColorStop(1,   'rgba(33,84,150,0.42)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2);
+      ctx.fillStyle = aInner; ctx.fill();
+
+      ctx.restore();
+
+      // Scroll textures
+      texX -= 0.12;
+      cldX -= 0.18;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+
+  // ── SPACE CANVAS ──
+  (function() {
+    const canvas = document.getElementById('spaceCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, scrollY = 0;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+    // Stars across 3 parallax layers
+    const STAR_COUNT = 280;
+    const stars = Array.from({ length: STAR_COUNT }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      r: Math.random() * 1.4 + 0.2,
+      op: Math.random() * 0.7 + 0.3,
+      dop: (Math.random() * 0.008 + 0.003) * (Math.random() < 0.5 ? 1 : -1),
+      layer: Math.floor(Math.random() * 3)   // 0=far 1=mid 2=near
+    }));
+
+    // Shooting stars
+    const shots = [];
+    const PARALLAX = [0.03, 0.07, 0.14];
+
+    function spawnShot() {
+      shots.push({
+        x: Math.random() * W,
+        y: Math.random() * H * 0.6,
+        len: Math.random() * 140 + 80,
+        spd: Math.random() * 9 + 7,
+        op: 1,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.4
+      });
+    }
+    spawnShot();
+    setInterval(spawnShot, 2800);
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Stars
+      stars.forEach(s => {
+        s.op += s.dop;
+        if (s.op >= 1)   { s.op = 1;   s.dop = -Math.abs(s.dop); }
+        if (s.op <= 0.1) { s.op = 0.1; s.dop =  Math.abs(s.dop); }
+
+        const py = PARALLAX[s.layer];
+        let y = (s.y * H - scrollY * py) % H;
+        if (y < 0) y += H;
+
+        ctx.beginPath();
+        ctx.arc(s.x * W, y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.op})`;
+        ctx.fill();
+      });
+
+      // Shooting stars
+      for (let i = shots.length - 1; i >= 0; i--) {
+        const s = shots[i];
+        s.x += Math.cos(s.angle) * s.spd;
+        s.y += Math.sin(s.angle) * s.spd;
+        s.op -= 0.012;
+
+        if (s.op <= 0 || s.x > W + 50 || s.y > H + 50) {
+          shots.splice(i, 1);
+          continue;
+        }
+
+        const tx = s.x - Math.cos(s.angle) * s.len;
+        const ty = s.y - Math.sin(s.angle) * s.len;
+        const g  = ctx.createLinearGradient(tx, ty, s.x, s.y);
+        g.addColorStop(0, `rgba(180,180,255,0)`);
+        g.addColorStop(1, `rgba(220,220,255,${s.op})`);
+        ctx.beginPath();
+        ctx.moveTo(tx, ty);
+        ctx.lineTo(s.x, s.y);
+        ctx.strokeStyle = g;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(draw);
+    }
+    draw();
   })();
 </script>
 </body>
