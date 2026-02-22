@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>개발자 포트폴리오</title>
+  <title>이민용 | AI Developer</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
     :root {
@@ -632,12 +633,7 @@
       position: fixed; border-radius: 50%;
       filter: blur(90px); opacity: 0.18;
       pointer-events: none; z-index: 0;
-      animation: nebulaDrift ease-in-out infinite;
-    }
-    @keyframes nebulaDrift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      33%      { transform: translate(40px,-30px) scale(1.08); }
-      66%      { transform: translate(-30px,40px) scale(0.94); }
+      will-change: transform;
     }
     section, #hero, #about, #skills, #projects, #awards, #contact, footer {
       position: relative; z-index: 1;
@@ -646,6 +642,7 @@
     .float-sidebar { z-index: 150; }
     .back-to-top { z-index: 200; }
     .cursor { z-index: 9999; }
+
 
     /* ── CURSOR DOT ── */
     .cursor { pointer-events: none; position: fixed; z-index: 9999; mix-blend-mode: screen; }
@@ -1644,6 +1641,45 @@
     requestAnimationFrame(animRing);
   })();
 
+  // ── NEBULA MOUSE PARALLAX ──
+  (function() {
+    const blobs = document.querySelectorAll('.nebula-blob');
+    // 각 블롭마다 시차 강도 (양수=마우스방향, 음수=반대방향)
+    const factors = [0.08, -0.06, 0.05, -0.07];
+    let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+    let sx = tx, sy = ty;
+    // 각 블롭의 ambient drift 상태
+    const drifts = Array.from(blobs).map((_, i) => ({
+      t: i * 2.1,
+      ox: 0, oy: 0, osx: 0, osy: 0
+    }));
+
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+    (function anim() {
+      sx += (tx - sx) * 0.04;
+      sy += (ty - sy) * 0.04;
+      const mdx = sx - window.innerWidth  / 2;
+      const mdy = sy - window.innerHeight / 2;
+
+      blobs.forEach((b, i) => {
+        const d = drifts[i];
+        d.t += 0.004;
+        // 느린 ambient drift
+        d.ox = Math.sin(d.t * 0.7 + i) * 35 + Math.cos(d.t * 0.4) * 20;
+        d.oy = Math.cos(d.t * 0.6 + i) * 28 + Math.sin(d.t * 0.5) * 18;
+        d.osx += (d.ox - d.osx) * 0.02;
+        d.osy += (d.oy - d.osy) * 0.02;
+        // 마우스 시차
+        const f = factors[i];
+        const mx = mdx * f + d.osx;
+        const my = mdy * f + d.osy;
+        b.style.transform = `translate(${mx}px, ${my}px)`;
+      });
+      requestAnimationFrame(anim);
+    })();
+  })();
+
   // ── EARTH GLOBE (blowROCK style) ──
   (function() {
     const canvas = document.getElementById('earthCanvas');
@@ -1830,8 +1866,16 @@
       r: Math.random() * 1.4 + 0.2,
       op: Math.random() * 0.7 + 0.3,
       dop: (Math.random() * 0.008 + 0.003) * (Math.random() < 0.5 ? 1 : -1),
-      layer: Math.floor(Math.random() * 3)   // 0=far 1=mid 2=near
+      layer: Math.floor(Math.random() * 3),
+      ox: 0, oy: 0   // 마우스 회피 오프셋
     }));
+
+    // 마우스 위치 추적
+    let mouseX = -9999, mouseY = -9999;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    const REPEL_R = 120;        // 반경(px)
+    const REPEL_DIST = 90;      // 최대 밀려나는 거리(px)
+    const SPRING = 0.07;        // 복귀 속도
 
     // Shooting stars
     const shots = [];
@@ -1860,11 +1904,25 @@
         if (s.op <= 0.1) { s.op = 0.1; s.dop =  Math.abs(s.dop); }
 
         const py = PARALLAX[s.layer];
-        let y = (s.y * H - scrollY * py) % H;
-        if (y < 0) y += H;
+        let baseY = (s.y * H - scrollY * py) % H;
+        if (baseY < 0) baseY += H;
+        const baseX = s.x * W;
+
+        // 마우스 회피
+        const dx = baseX + s.ox - mouseX;
+        const dy = baseY + s.oy - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < REPEL_R && dist > 0) {
+          const force = (REPEL_R - dist) / REPEL_R;
+          s.ox += ((dx / dist) * force * REPEL_DIST - s.ox) * 0.25;
+          s.oy += ((dy / dist) * force * REPEL_DIST - s.oy) * 0.25;
+        } else {
+          s.ox += (0 - s.ox) * SPRING;
+          s.oy += (0 - s.oy) * SPRING;
+        }
 
         ctx.beginPath();
-        ctx.arc(s.x * W, y, s.r, 0, Math.PI * 2);
+        ctx.arc(baseX + s.ox, baseY + s.oy, s.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${s.op})`;
         ctx.fill();
       });
