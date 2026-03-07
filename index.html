@@ -298,6 +298,7 @@
     .projects-grid-view.active .grid-project-card:nth-child(4) { animation-delay: 0.21s; }
     .projects-grid-view.active .grid-project-card:nth-child(5) { animation-delay: 0.28s; }
     .projects-grid-view.active .grid-project-card:nth-child(6) { animation-delay: 0.35s; }
+    .projects-grid-view.active .grid-project-card:nth-child(7) { animation-delay: 0.42s; }
     @keyframes carouselFadeIn {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0);    }
@@ -878,7 +879,7 @@
     <div class="hero-card fade-up">
       <div class="stat-grid">
         <div class="stat-item">
-          <div class="stat-num">6+</div>
+          <div class="stat-num">7+</div>
           <div class="stat-label">완성 프로젝트</div>
         </div>
         <div class="stat-item">
@@ -1373,6 +1374,25 @@
       ],
       stack: ['Python', 'FastAPI', 'React', 'TypeScript', 'SQLite', 'Groq API'],
       github: 'https://github.com/dlalsdyd01/My_chatbot', demo: null
+    },
+    {
+      emoji: '🧚', image: 'images/AI_Assistant2.png', bg: 'linear-gradient(135deg,#1a0a2e,#2b1055,#0a0f1a)',
+      badge: 'AI', badgeClass: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2026.03',
+      title: '나의 AI 캐릭터 비서',
+      desc: 'Live2D 캐릭터가 화면 위에 상주하며</br>로컬 LLM으로 대화하는 AI 데스크톱 비서',
+      shortDesc: 'Electron 투명 윈도우 위 Live2D 캐릭터가 Ollama 로컬 LLM으로 대화하고, GPT-SoVITS 음성 합성·립싱크·감정 표현·화면 감시까지 지원하는 AI 비서',
+      fullDesc: 'Electron 기반 투명 윈도우 위에 Live2D 캐릭터가 상주하며 사용자와 자연스럽게 대화하는 데스크톱 AI 비서입니다. Ollama 로컬 LLM(exaone3.5:7.8b)으로 한국어 대화를 지원하고, GPT-SoVITS 커스텀 음성 합성과 립싱크로 캐릭터가 직접 말하듯 응답합니다. 대화 맥락에 따른 감정 자동 표현, llava 비전 모델 기반 화면 감시, 마우스 커서 추적 등 살아있는 AI 캐릭터 경험을 제공합니다.',
+      features: [
+        'Ollama 로컬 LLM 기반 자연스러운 한국어 대화',
+        'Live2D 캐릭터 렌더링 — 마우스 커서 눈 추적',
+        '대화 맥락 기반 감정 자동 표현 (기쁨, 슬픔, 분노 등)',
+        'GPT-SoVITS 커스텀 음성 합성 + Edge TTS 폴백',
+        '립싱크 — PIXI ticker + 사인파 합성으로 자연스러운 입 움직임',
+        'llava 비전 모델 기반 화면 캡처 및 분석 감시',
+        '투명 윈도우 항상 위 표시 — 드래그로 자유롭게 이동'
+      ],
+      stack: ['Electron', 'pixi.js', 'Live2D', 'Ollama', 'GPT-SoVITS', 'Edge TTS', 'JavaScript'],
+      github: 'https://github.com/dlalsdyd01/MyAIAssistant', demo: null
     }
   ];
 
