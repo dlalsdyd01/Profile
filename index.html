@@ -117,7 +117,7 @@
     #hero {
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; padding: 80px 60px 0;
+      position: relative; overflow: hidden; padding: 140px 60px 0;
     }
     .hero-bg {
       position: absolute; inset: 0; pointer-events: none;
@@ -351,7 +351,7 @@
     .badge-ml { background: rgba(255,101,132,0.15); color: var(--accent2); }
     .badge-team { background: rgba(56,189,248,0.15); color: #38bdf8; }
     .badge-solo { background: rgba(251,191,36,0.15); color: #fbbf24; }
-    .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; word-break: keep-all; }
     .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; word-break: keep-all; }
     .project-stack { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; }
     .stack-chip {
@@ -520,7 +520,7 @@
     .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .about-info-item { background: var(--bg3); border-radius: 10px; padding: 14px 16px; }
     .info-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
-    .info-value { font-size: 1.05rem; font-weight: 700; }
+    .info-value { font-size: 1.05rem; font-weight: 700; word-break: keep-all; white-space: nowrap; }
 
     /* ── TIMELINE ── */
     .timeline { position: relative; padding-left: 32px; }
@@ -696,7 +696,7 @@
 
     @media (max-width: 768px) {
       /* 가로 스크롤 방지 */
-      body { overflow-x: hidden; }
+      html, body { overflow-x: hidden; max-width: 100vw; }
 
       /* NAV */
       nav { padding: 14px 20px; }
@@ -709,7 +709,7 @@
       .back-to-top { right: 20px !important; bottom: 20px !important; }
 
       /* HERO */
-      #hero { padding: 120px 20px 60px; min-height: 100vh; overflow: visible; align-items: flex-start; }
+      #hero { padding: 200px 20px 60px; min-height: 100vh; overflow: visible; align-items: flex-start; }
       .hero-grid { grid-template-columns: 1fr; gap: 28px; text-align: left; }
       .hero-card { display: none; }
       .hero-name { font-size: clamp(1.9rem, 7vw, 2.6rem); line-height: 1.15; }
@@ -738,9 +738,13 @@
       .carousel-scene { height: auto; min-height: 520px; padding: 10px 0; overflow: visible; }
       .carousel-track { width: 290px; height: 480px; }
       .carousel-item { width: 290px; height: 480px; }
+      .carousel-item.is-active.flip-ready:hover .card-front,
+      .carousel-item.is-active.flip-ready:hover .card-back { transform: none !important; }
+      .back-title { font-size: 0.9rem; }
+      .back-desc { font-size: 0.7rem; }
       .project-thumb { height: 180px; }
       .project-body { padding: 14px 16px; }
-      .project-title { font-size: 1rem; }
+      .project-title { font-size: 0.9rem; }
       .projects-grid-view { grid-template-columns: 1fr; padding: 0; gap: 14px; }
       .grid-project-card .project-thumb { height: 150px; }
       .carousel-controls { flex-wrap: wrap; gap: 12px; }
@@ -785,9 +789,9 @@
 
       /* CONTACT */
       #contact { padding: 64px 20px; }
-      .contact-card { padding: 36px 20px; max-width: 100%; }
+      .contact-card { padding: 36px 20px; max-width: 100%; box-sizing: border-box; }
       .contact-card h2 { font-size: 1.6rem; }
-      .contact-card p { font-size: 0.97rem; }
+      .contact-card p { font-size: 0.9rem; line-height: 1.6; word-break: keep-all; }
       .contact-info-item a, .contact-info-item span { font-size: 1rem; }
       .contact-links { flex-direction: column; align-items: stretch; }
       .contact-link { justify-content: center; }
@@ -797,10 +801,12 @@
 
       /* MODAL */
       .modal-overlay { padding: 12px; }
-      .modal { border-radius: 16px; max-height: 92vh; }
-      .modal-body { padding: 20px 18px; }
+      .modal { border-radius: 16px; max-height: 92vh; max-width: 100%; box-sizing: border-box; }
+      .modal-body { padding: 20px 16px; word-break: keep-all; }
       .modal-header { height: 150px; font-size: 3rem; }
-      .modal-title { font-size: 1.25rem; }
+      .modal-title { font-size: 1.2rem; }
+      .modal-desc { font-size: 0.9rem; line-height: 1.6; }
+      .modal-tags { flex-wrap: wrap; }
       .modal-actions { flex-direction: column; gap: 8px; }
       .modal-actions .btn { justify-content: center; }
     }
@@ -860,7 +866,7 @@
 </div>
 
 <!-- HERO -->
-<section id="hero" style="max-width:100%;padding-top:0;">
+<section id="hero" style="max-width:100%;">
   <div class="hero-bg">
     <div class="orb orb-purple"></div>
     <div class="orb orb-pink"></div>
@@ -930,10 +936,10 @@
             </div>
           </div>
           <p class="about-text">
-            나사렛대학교 IT인공지능학부를 졸업하고, 우송IT교육센터 </br>채용연계형 SW 전문인재 양성교육 및 바이오헬스 우송캠퍼스 교육과정을 수료했습니다.
+            나사렛대학교 IT인공지능학부를 졸업하고, 우송IT교육센터채용연계형 SW 전문인재 양성교육 및 바이오헬스 우송캠퍼스 교육과정을 수료했습니다.
           </p>
           <p class="about-text">
-            PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지 </br>end-to-end로 개발할 수 있는 AI 기반 개발자입니다.
+            PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지end-to-end로 개발할 수 있는 AI 기반 개발자입니다.
           </p>
           <p class="about-text">
             개발 역량 외에도 Figma · Adobe XD를 활용한 UI/UX 설계, Photoshop · 3ds Max를 이용한 그래픽·3D 작업, After Effects · Premiere Pro를 통한 영상 편집까지 가능해 기획부터 개발, 디자인, 콘텐츠 제작을 혼자서도 수행할 수 있습니다.
@@ -1287,7 +1293,7 @@
       emoji: '🤟', image: 'images/Slive.png', bg: 'linear-gradient(135deg,#1a0533,#2d1b69,#1a0a2e)',
       badge: 'AI', badgeClass: 'badge-ml', type: '팀 프로젝트', typeClass: 'badge-team', date: '2025.12',
       title: 'SLIVE — AI 한국 수어 인식 시스템',
-      desc: 'MediaPipe & TensorFlow.js 기반</br>한국 수어 실시간 인식·번역 웹 애플리케이션',
+      desc: 'MediaPipe & TensorFlow.js 기반한국 수어 실시간 인식·번역 웹 애플리케이션',
       shortDesc: '웹캠으로 한국 수어를 93%+ 정확도로 실시간 인식하고, 브라우저에서 4가지 CNN 모델을 직접 학습·비교할 수 있는 AI 번역 시스템',
       fullDesc: 'MediaPipe Hands와 TensorFlow.js를 활용하여 웹캠으로 한국 수어를 실시간 인식하고 번역하는 AI 시스템입니다. 브라우저에서 직접 모델을 학습할 수 있으며, Baseline · ResNet · DenseNet · EfficientNet 4가지 CNN 모델의 성능을 비교할 수 있는 리더보드 기능도 제공합니다. Google Gemini AI를 연동하여 고도화된 수어 패턴 분석을 지원합니다.',
       features: [
@@ -1306,7 +1312,7 @@
       emoji: '💹', image: 'images/Upbit.png', bg: 'linear-gradient(135deg,#0a1f0a,#0d3b1a,#0a2818)',
       badge: 'AI', badgeClass: 'badge-ml', type: '팀 프로젝트', typeClass: 'badge-team', date: '2026.01',
       title: '뉴스감성분석 기반 Upbit AI자동매매',
-      desc: 'PPO 강화학습 기반 업비트 가상화폐 </br>자동매매 및 AI 코인 추천 시스템',
+      desc: 'PPO 강화학습 기반 업비트 가상화폐자동매매 및 AI 코인 추천 시스템',
       shortDesc: 'PPO 강화학습과 뉴스 감성분석으로 업비트를 자동매매하고, 20가지 기술적 지표로 TOP 10 코인을 추천하는 실시간 대시보드',
       fullDesc: 'Stable-Baselines3의 PPO(Proximal Policy Optimization) 강화학습 알고리즘을 활용한 업비트 가상화폐 자동매매 시스템입니다. SMA, EMA, MACD, RSI, 볼린저 밴드 등 20가지 이상의 기술적 지표를 분석하여 TOP 10 코인을 추천하고, FastAPI 기반 실시간 웹 대시보드(WebSocket, 다크모드 UI)를 제공합니다. 뉴스 감성 분석 기반 매매 신호와 백테스팅 기능도 포함되어 있습니다.',
       features: [
@@ -1325,7 +1331,7 @@
       emoji: '🎰', image: 'images/Lotto.png', bg: 'linear-gradient(135deg,#1a1000,#3b2800,#1a1500)',
       badge: '웹', badgeClass: 'badge-web', badge2: 'AI', badgeClass2: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2026.02',
       title: '로또 번호 분석 웹앱',
-      desc: '실시간 로또 당첨번호 통계 분석 및 AI 기반 </br>번호 예측 서비스 — 도메인 구입, 서버 구축, Google AdSense 수익창출 운영 중',
+      desc: '실시간 로또 당첨번호 통계 분석 및 AI 기반 번호 예측 서비스 — 도메인·서버 구축, AdSense 수익창출 운영중',
       shortDesc: '전체 회차 데이터 기반 AI 번호 예측·통계 분석 서비스. 도메인 직접 구입 후 배포, Google AdSense 광고 수익 실제 창출 중',
       fullDesc: '2002년 첫 회차부터 현재까지 모든 로또 당첨 데이터를 수집·분석하여 통계적 인사이트를 제공하고, 가중 확률 기반 AI 번호 예측 기능을 제공하는 웹 애플리케이션입니다. 단순 개발에 그치지 않고 도메인(lottoanalytics.co.kr)을 직접 구입하고 서버를 구축하여 실서비스로 배포했으며, Google Analytics로 방문자 데이터를 분석하고 Google AdSense를 연동해 광고 수익까지 창출하고 있는 실제 운영 서비스입니다.',
       features: [
@@ -1345,7 +1351,7 @@
       emoji: '🤖', image: 'images/Pothole.png', bg: 'linear-gradient(135deg,#0a0f1a,#0f1f2e,#0a1520)',
       badge: 'AI', badgeClass: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2025.05',
       title: 'YOLOv5 포트홀 감지 로봇 제어',
-      desc: '실시간 웹캠으로 포트홀을 감지해 </br>시리얼 통신으로 로봇을 자동 제어하는 AI 시스템',
+      desc: '실시간 웹캠으로 포트홀을 감지해시리얼 통신으로 로봇을 자동 제어하는 AI 시스템',
       shortDesc: 'YOLOv5로 실시간 포트홀을 감지하고 시리얼 통신으로 로봇을 즉시 제어, 미감지 시 3초 후 자동 복귀하는 AI 임베디드 시스템',
       fullDesc: 'YOLOv5 객체 감지 모델을 활용하여 실시간 웹캠 영상에서 도로 포트홀을 탐지하고, 감지 결과에 따라 시리얼 통신으로 로봇에 명령을 전송하는 시스템입니다. 멀티스레딩 구조로 GUI 응답성을 유지하며, 포트홀이 일정 시간 사라지면 3초 후 기본 자세로 자동 복귀합니다.',
       features: [
@@ -1362,7 +1368,7 @@
       emoji: '💬', image: 'images/My_chatbot.png', bg: 'linear-gradient(135deg,#0a1a2e,#0d2a4a,#0a1f3a)',
       badge: 'AI', badgeClass: 'badge-ml', badge2: '웹', badgeClass2: 'badge-web', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2025',
       title: 'My Chatbot — RAG 기반 AI 챗봇',
-      desc: 'PDF/TXT 문서 업로드 기반 </br>실시간 스트리밍 AI 대화 시스템',
+      desc: 'PDF/TXT 문서 업로드 기반실시간 스트리밍 AI 대화 시스템',
       shortDesc: 'PDF/TXT 업로드 시 문서 기반으로 Groq LLM이 실시간 스트리밍 응답. 대화 검색·자동 제목 생성·마크다운 렌더링까지 갖춘 AI 챗봇',
       fullDesc: 'RAG(Retrieval-Augmented Generation) 기술을 활용한 AI 챗봇 애플리케이션입니다. PDF/TXT 파일을 업로드하면 문서 내용을 기반으로 Groq API(llama-3.3-70b)가 실시간 스트리밍으로 응답합니다. 대화 검색, 자동 제목 생성, 마크다운 렌더링 등의 기능을 갖추고 있습니다.',
       features: [
@@ -1379,7 +1385,7 @@
       emoji: '🧚', image: 'images/AI_Assistant2.png', bg: 'linear-gradient(135deg,#1a0a2e,#2b1055,#0a0f1a)',
       badge: 'AI', badgeClass: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2026.03',
       title: '나의 AI 캐릭터 비서',
-      desc: 'Live2D 캐릭터가 화면 위에 상주하며</br>로컬 LLM으로 대화하는 AI 데스크톱 비서',
+      desc: 'Live2D 캐릭터가 화면 위에 상주하며로컬 LLM으로 대화하는 AI 데스크톱 비서',
       shortDesc: 'Electron 투명 윈도우 위 Live2D 캐릭터가 Ollama 로컬 LLM으로 대화하고, GPT-SoVITS 음성 합성·립싱크·감정 표현·화면 감시까지 지원하는 AI 비서',
       fullDesc: 'Electron 기반 투명 윈도우 위에 Live2D 캐릭터가 상주하며 사용자와 자연스럽게 대화하는 데스크톱 AI 비서입니다. Ollama 로컬 LLM(exaone3.5:7.8b)으로 한국어 대화를 지원하고, GPT-SoVITS 커스텀 음성 합성과 립싱크로 캐릭터가 직접 말하듯 응답합니다. 대화 맥락에 따른 감정 자동 표현, llava 비전 모델 기반 화면 감시, 마우스 커서 추적 등 살아있는 AI 캐릭터 경험을 제공합니다.',
       features: [
