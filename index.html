@@ -875,8 +875,12 @@
     <div>
       <div class="hero-tag">✦ Available for work</div>
       <h1 class="hero-name">안녕하세요,<br>저는 <span>이민용</span>입니다</h1>
-      <p class="hero-role">AI Developer · Full-Stack Engineer</p>
-      <p class="hero-desc">AI 기술을 중심으로 실생활 문제를 해결하는 개발자입니다. 머신러닝·딥러닝부터 웹 서비스 구축까지 end-to-end로 구현하며, 사용자에게 실질적인 가치를 전달하는 것을 목표로 합니다.</p>
+      <p class="hero-role">AI Developer · Full-Stack Engineer · iOS / SaaS Builder</p>
+      <p class="hero-desc">
+        <span style="color:var(--text);font-weight:700;">AI</span>로 실생활의 문제를 풀고, 직접 만든 서비스를 끝까지 책임지는 개발자입니다.<br>
+        머신러닝·딥러닝부터 <span style="color:var(--text);font-weight:700;">웹 · iOS 앱 · 홈페이지 제작 서비스</span>까지 1인 풀스택으로 구현하고,<br>
+        <span style="color:var(--text);font-weight:700;">출시 → 운영 → 수익화</span>까지 이어가는 실질적인 가치를 만들어 냅니다.
+      </p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">⚡ 프로젝트 보기</a>
         <a href="#contact" class="btn btn-outline">연락하기 →</a>
@@ -885,7 +889,7 @@
     <div class="hero-card fade-up">
       <div class="stat-grid">
         <div class="stat-item">
-          <div class="stat-num">7+</div>
+          <div class="stat-num">9+</div>
           <div class="stat-label">완성 프로젝트</div>
         </div>
         <div class="stat-item">
@@ -942,7 +946,10 @@
             PyTorch · MediaPipe · YOLOv5 등 AI 기술을 활용한 실전 프로젝트를 직접 기획·구현하며, 머신러닝·딥러닝부터 웹 서비스 배포까지end-to-end로 개발할 수 있는 AI 기반 개발자입니다.
           </p>
           <p class="about-text">
-            개발 역량 외에도 Figma · Adobe XD를 활용한 UI/UX 설계, Photoshop · 3ds Max를 이용한 그래픽·3D 작업, After Effects · Premiere Pro를 통한 영상 편집까지 가능해 기획부터 개발, 디자인, 콘텐츠 제작을 혼자서도 수행할 수 있습니다.
+            홈페이지 제작 서비스 <strong>Pagemaker(pagemaker.co.kr)</strong>를 직접 기획·개발·운영하며 실제 고객 의뢰를 받아 결과물을 납품하고 만족스러운 피드백과 매출을 창출하고 있으며, Xcode·Swift로 직접 개발한 <strong>iOS 앱 6종</strong>(TopikPass · 컴활패스 1/2급 · 정처기 문제은행 · WoofValley · Perfect Split)을 App Store에 출시해 실제 광고 수익을 만들어내고 있습니다.
+          </p>
+          <p class="about-text">
+            개발 역량 외에도 Figma · Adobe XD를 활용한 UI/UX 설계, Photoshop · 3ds Max를 이용한 그래픽·3D 작업, After Effects · Premiere Pro를 통한 영상 편집까지 가능해 기획부터 개발, 디자인, 콘텐츠 제작, 서비스 운영까지 혼자서도 수행할 수 있습니다.
           </p>
           <div class="about-info-grid">
             <div class="about-info-item">
@@ -1271,6 +1278,45 @@
   // ── PROJECT DATA ──
   const projects = [
     {
+      emoji: '🛠️', image: 'images/pagemaker.png', imagePosition: 'center top', bg: 'linear-gradient(135deg,#0a1530,#0f2a5a,#0a1f3d)',
+      badge: '웹', badgeClass: 'badge-web', type: '개인 프로젝트', typeClass: 'badge-solo', date: '운영 중',
+      title: 'Pagemaker — 홈페이지 제작 서비스',
+      desc: '실제 고객 의뢰를 받아 홈페이지를 제작·납품하고 </br>수익을 창출 중인 1인 운영 서비스',
+      shortDesc: '실제 고객의 의뢰를 받아 홈페이지를 제작·납품해 만족 후기를 받았으며, 도메인·서버·운영까지 직접 책임지며 매출이 발생 중인 서비스',
+      fullDesc: '실제 고객으로부터 의뢰를 받아 맞춤형 홈페이지를 제작·납품하는 1인 홈페이지 제작 서비스(pagemaker.co.kr)입니다. 단순한 토이 프로젝트가 아니라, 결과물을 받은 고객들로부터 만족스러운 피드백을 받았고 실제 매출이 발생하고 있는 운영 중인 비즈니스입니다. 기획·디자인·프론트엔드·백엔드 개발부터 도메인 구입, 서버 인프라 구축, 고객 응대, 유지보수까지 모든 과정을 1인이 처음부터 끝까지 책임지고 운영하고 있습니다.',
+      features: [
+        '실제 고객 의뢰 기반 맞춤형 홈페이지 제작·납품',
+        '납품 후 만족스러운 고객 피드백 및 후기 확보',
+        '서비스 운영을 통한 실제 매출 발생 중',
+        '반응형 레이아웃으로 PC·태블릿·모바일 자동 대응',
+        '도메인(pagemaker.co.kr) 직접 구입 및 서버 인프라 직접 구축·운영',
+        '고객 응대·요구사항 협의·납품·유지보수까지 1인 풀사이클 운영',
+        '기획·디자인·개발·인프라·세일즈 전 과정 직접 수행'
+      ],
+      stack: ['JavaScript', 'HTML/CSS', 'Node.js', '서버 운영', 'UI/UX', '고객 커뮤니케이션'],
+      github: null, demo: 'https://www.pagemaker.co.kr'
+    },
+    {
+      emoji: '📱', image: 'images/App.png', bg: 'linear-gradient(135deg,#0a1a2e,#1e3a8a,#0a2540)',
+      badge: '앱', badgeClass: 'badge-app', badge2: 'AI', badgeClass2: 'badge-ml', type: '개인 프로젝트', typeClass: 'badge-solo', date: '2025~2026',
+      title: 'iOS 앱 6종 App Store 출시 — 광고 수익 창출 중',
+      desc: 'Xcode로 직접 개발해 App Store에 출시,</br>실제 광고 수익이 발생 중인 iOS 네이티브 앱 6종',
+      shortDesc: 'Xcode·Swift로 직접 개발하여 App Store에 출시한 iOS 앱 6종 — 실제 다운로드 후 광고 수익이 발생 중인 운영 포트폴리오',
+      fullDesc: 'Apple Developer 계정 등록부터 Xcode·Swift 기반 네이티브 앱 개발, App Store Connect 심사 제출, 출시 이후 운영까지 모든 과정을 직접 진행한 iOS 앱 6종 포트폴리오입니다. 단순 출시에서 그치지 않고 App Store에 정식 등록되어 실제 사용자가 다운로드해 사용 중이며, 인앱 광고를 연동해 실제 광고 수익이 발생하고 있는 운영 중인 앱들입니다. AI 기반 학습 코칭부터 자격증 문제은행, 라이프스타일·게임 앱까지 다양한 카테고리에서 사용자 문제를 해결합니다.',
+      features: [
+        'Xcode·Swift로 직접 개발한 iOS 네이티브 앱 6종 App Store 정식 출시',
+        '인앱 광고 연동을 통한 실제 광고 수익 창출 중',
+        'TopikPass: AI Korean Coach — 외국인을 위한 AI 한국어 학습 코칭 앱',
+        '컴활패스 1급 / 2급: AI 코칭 — 컴퓨터활용능력 AI 학습 도우미',
+        '정처기 문제은행 — 정보처리기사 기출·예상 문제은행 앱',
+        'WoofValley — 반려견 라이프스타일 앱',
+        'Perfect Split — 캐주얼 모바일 게임',
+        'Apple Developer 등록·심사 제출·출시 후 운영까지 1인 전 과정 수행'
+      ],
+      stack: ['Xcode', 'Swift', 'iOS', 'App Store Connect', 'AdMob', 'AI/LLM', 'Apple Developer'],
+      github: null, demo: null
+    },
+    {
       emoji: '🌏', image: 'images/KWV.png', bg: 'linear-gradient(135deg,#001a33,#003366,#001a4d)',
       badge: '웹', badgeClass: 'badge-web', type: '팀 프로젝트', typeClass: 'badge-team', date: '2025',
       title: 'KWV — 외국인 근로자 관리 플랫폼',
@@ -1436,7 +1482,7 @@
         <div class="card-front">
           <div class="card-content-clip">
             <div class="project-thumb" style="background:${p.bg}">
-              ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">` : `<span>${p.emoji}</span>`}
+              ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:${p.imageFit || 'cover'};object-position:${p.imagePosition || 'center'};position:absolute;inset:0;">` : `<span>${p.emoji}</span>`}
             </div>
             <div class="project-body">
               <div class="project-badges">
@@ -1535,7 +1581,7 @@
     document.getElementById('modalHeader').style.background = p.bg;
     document.getElementById('modalHeader').querySelector('.modal-close') || null;
     document.getElementById('modalHeader').innerHTML = p.image
-      ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">`
+      ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:${p.imageFit || 'cover'};object-position:${p.imagePosition || 'center'};position:absolute;inset:0;">`
       : `<span style="font-size:4rem">${p.emoji}</span>`;
     document.getElementById('modalBadges').innerHTML = `<span class="badge ${p.badgeClass}">${p.badge}</span>${p.type ? ` <span class="badge ${p.typeClass}">${p.type}</span>` : ''}`;
     document.getElementById('modalTitle').textContent = p.title;
@@ -1564,7 +1610,7 @@
     card.className = 'grid-project-card';
     card.innerHTML = `
       <div class="project-thumb" style="background:${p.bg}">
-        ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">` : `<span>${p.emoji}</span>`}
+        ${p.image ? `<img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:${p.imageFit || 'cover'};object-position:${p.imagePosition || 'center'};position:absolute;inset:0;">` : `<span>${p.emoji}</span>`}
       </div>
       <div class="project-body">
         <div class="project-badges">
